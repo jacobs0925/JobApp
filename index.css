@@ -1,4 +1,50 @@
 .pic-and-links
 {
+    display: flex;
+    flex-direction: column;
+}
+
+.links
+{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+}
+
+.social-link
+{
+    height: 8vh;
+    object-fit: cover;
+    margin: 1vh;
+}
+
+.image
+{
+    height: inherit;
+    background-color: #FAF5E9;
+}
+
+.about-me
+{
     background-image: url(./background.jpg);
+    background-size: cover;
+    height: 80vh;
+}
+
+.header
+{
+    background-color: #1f1f1f;
+    justify-content: right;
+    display: flex;
+}
+
+.name
+{
+    display: flex;
+    color: #fc0;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    line-height: 60px;
+    font-family: Value-Serif-Bold, Halant, Vollkorn, Georgia, sans-serif;
 }
