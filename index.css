@@ -24,11 +24,54 @@
     background-color: #FAF5E9;
 }
 
-.about-me
+.landing
 {
     background-image: url(./background.jpg);
     background-size: cover;
+    width: 100%;
+    position: absolute;
     height: 80vh;
+    filter: brightness(75%);
+}
+
+.name-and-button
+{
+    align-items: center;
+    position: relative;
+    height: inherit;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing-container
+{
+    height: 80vh;
+}
+
+.about-me-button
+{
+    margin: 2vh;
+    border-radius: 25px;
+    width: fit-content;
+    font-size: 20px;
+    height: 7vh;
+    background-color: #fc0;
+    border-color: #fc0;
+    color: #1f1f1f;
+}
+
+.about-me-button-text
+{
+    margin: .5vh;
+}
+
+.btn-primary:hover
+{
+    color: #1f1f1f;
+    background: #ffe270;
+    border: 2px solid #ffe270;
 }
 
 .header
@@ -42,9 +85,11 @@
 {
     display: flex;
     color: #fc0;
-    align-items: center;
     justify-content: center;
-    font-size: 50px;
+    z-index: 2;
+    width: 100%;
+    font-size: 80px;
     line-height: 60px;
+    font-weight: 900;
     font-family: Value-Serif-Bold, Halant, Vollkorn, Georgia, sans-serif;
 }
