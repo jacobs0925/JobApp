@@ -67,6 +67,14 @@
     margin: .5vh;
 }
 
+.about-me-text
+{
+    background-color: #52536B;
+    color: #FFCC4F;
+    font-weight: 700;
+    padding: 5vh;
+}
+
 .btn-primary:hover
 {
     color: #1f1f1f;
