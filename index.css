@@ -30,7 +30,7 @@
     background-size: cover;
     width: 100%;
     position: absolute;
-    height: 80vh;
+    height: 100%;
     filter: brightness(75%);
 }
 
@@ -47,7 +47,7 @@
 
 .landing-container
 {
-    height: 80vh;
+    height: 100vh;
 }
 
 .about-me-button
@@ -79,6 +79,12 @@
     background-color: #1f1f1f;
     justify-content: right;
     display: flex;
+}
+
+.footer
+{
+    background-color: #1f1f1f;
+    height: 5vh;
 }
 
 .name
