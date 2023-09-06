@@ -11,7 +11,7 @@
     <div class="header">
         <div class="pic-and-links">
             <div class="links">
-                <img class="img-responsive rounded-circle social-link" src="./headshot.png">
+                <!-- <img class="img-responsive rounded-circle social-link" src="./headshot.png"> -->
 
                 <a target="_blank" class="social-link" title="Github" href="https://github.com/jacobs0925">
                     <img class="img-responsive rounded-circle image" src="./github.png">
@@ -36,21 +36,29 @@
                 Hi! I'm Jacob
 
             </div>
-            <button type="button" class="btn btn-primary about-me-button">
-                <div class="about-me-button-text">
-                    About Me
-                </div>
-            </button>
+
+            <div class="button-container">
+                <button type="button" id="about-me-button" class="about-me-button btn btn-primary ">
+                    <div class="about-me-button-text">
+                        About Me
+                    </div>
+                </button>
+
+                <button type="button" id="projects-button" class="about-me-button projects-button btn btn-primary">
+                    <div class="about-me-button-text projects-button-text">
+                        Projects
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
-    <div class="footer">
 
-    </div>
-
-    <div class="about-me">
+    <div class="about-me" id="about-me">
         <div class="about-me-header footer">
-
+            About Jacob
         </div>
+
+        <img class="about-me-headshot" src="./headshot.png">
 
         <div class="about-me-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -84,37 +92,87 @@
             sed arcu non
             odio euismod lacinia at. Vestibulum morbi blandit cursus risus.
         </div>
+    </div>
 
-        <div class="footer">
+    <div class="project-page" id="project-page">
+        <div class="about-me-header footer">
+            Projects
+        </div>
 
+        <div class="sliding-project-container">
+            <div class="scroll">
+                <img class="scroll-img" src="./scrollLeft.png" id="scroll-left">
+            </div>
+
+            <div class="project-container">
+                <div class="scrollbar scrollbar-primary">
+                    <a target="_blank" title="View project on Github" class="title" id="project-title"
+                        href="https://www.linkedin.com/in/jjschwar/">
+                        Title
+                    </a>
+
+                    <div class="sliding-media" id="project-media">
+
+                    </div>
+
+                    <div class="summary" id="project-summary">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna
+                        aliqua. Mattis aliquam faucibus purus in massa tempor nec feugiat. Sapien faucibus et molestie
+                        ac feugiat
+                        sed lectus.
+                        Euismod elementum nisi quis eleifend. Sed vulputate mi sit amet mauris commodo. Euismod quis
+                        viverra nibh
+                        cras. Sed
+                        risus pretium quam vulputate. In hendrerit gravida rutrum quisque non tellus. Iaculis eu non
+                        diam phasellus
+                        vestibulum
+                        lorem sed risus ultricies. Suscipit adipiscing bibendum est ultricies integer quis auctor elit
+                        sed. Vitae
+                        sapien
+                        pellentesque habitant morbi tristique. Commodo ullamcorper a lacus vestibulum sed arcu non odio.
+                        Augue eget
+                        arcu dictum
+                        varius duis at. Molestie a iaculis at erat. Volutpat diam ut venenatis tellus in metus
+                        vulputate. Pulvinar
+                        pellentesque
+                        habitant morbi tristique senectus et. Nulla at volutpat diam ut venenatis tellus. Morbi blandit
+                        cursus risus
+                        at ultrices
+                        mi tempus imperdiet.
+
+                        Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam. Condimentum id venenatis a
+                        condimentum
+                        vitae sapien
+                        pellentesque. Nunc sed id semper risus in hendrerit gravida rutrum quisque. Amet consectetur
+                        adipiscing elit
+                        pellentesque habitant morbi. Condimentum vitae sapien pellentesque habitant morbi. Integer enim
+                        neque
+                        volutpat ac. Lorem
+                        ipsum dolor sit amet consectetur adipiscing. Odio euismod lacinia at quis risus. Nisi est sit
+                        amet facilisis
+                        magna.
+                        Pretium nibh ipsum consequat nisl. Tempus iaculis urna id volutpat lacus laoreet non curabitur.
+                        Consequat
+                        mauris nunc
+                        congue nisi vitae. Id nibh tortor id aliquet lectus. Metus aliquam eleifend mi in nulla. Lacus
+                        vestibulum
+                        sed arcu non
+                        odio euismod lacinia at. Vestibulum morbi blandit cursus risus.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="scroll">
+                <img class="scroll-img" src="./scrollRight.png" id="scroll-right">
+            </div>
         </div>
     </div>
 
-    <div class="project-page">
-        <div class="project" id="senior">
-            <div class="title">
+    <div class="footer">
 
-            </div>
-            <div class="summary">
-
-            </div>
-
-            <div class="images">
-
-            </div>
-        </div>
-
-        <div class="project" id="webcrawler">
-
-        </div>
-
-        <div class="project" id="compiler">
-
-        </div>
-
-        <div class="project" id="webcrawler">
-
-        </div>
     </div>
 
     <script type="module" src="./index.js"></script>
