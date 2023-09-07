@@ -27,12 +27,12 @@
 {
     border-radius: .5vh;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    background-color: #43A6C5;
+    background-color: #fc0;
 }
 
 .scrollbar-primary
 {
-    scrollbar-color: #43A6C5 #1f1c1c;
+    scrollbar-color: #fc0 #1f1c1c;
 }
 
 .links
@@ -81,6 +81,15 @@
     height: 100vh;
 }
 
+.about-me-body
+{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 92vh;
+}
+
 .about-me-button
 {
     margin: 2vh;
@@ -126,10 +135,11 @@
 .about-me
 {
     flex-direction: column;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: #445372;
+    height: 100vh;
 }
 
 .about-me-button-text
@@ -141,7 +151,7 @@
 {
     height: 20vh;
     width: 20vh;
-    padding: 2vh;
+    margin-bottom: 5vh;
 }
 
 .about-me-text
@@ -171,6 +181,7 @@
 {
     background-color: #1f1f1f;
     height: 5vh;
+    position: relative;
 }
 
 .button-container
@@ -185,9 +196,9 @@
 .project-page
 {
     flex-direction: column;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: #445372;
     height: 100vh;
 }
@@ -203,6 +214,8 @@
 .project-container
 {
     width: 100%;
+    height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -261,4 +274,27 @@ a:visited:active,
     line-height: 60px;
     font-weight: 900;
     font-family: Value-Serif-Bold, Halant, Vollkorn, Georgia, sans-serif;
+}
+
+.image-container
+{
+    width: 85%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.current-image
+{
+    width: 20vh;
+    height: 20vh;
+}
+
+.sliding-media
+{
+    display: flex;
+    height: 30vh;
+    width: 30vh;
+    margin-bottom: 5vh;
 }

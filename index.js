@@ -1,6 +1,7 @@
 import projectArray from './projects.json' assert { type: 'json' };
 
 var projectIndex = 0;
+var imageIndex = 0;
 init()
 
 function init()
@@ -11,6 +12,8 @@ function init()
         let projectsButton = document.getElementById('projects-button')
         let scrollLeft = document.getElementById('scroll-left')
         let scrollRight = document.getElementById('scroll-right')
+        let mediaScrollLeft = document.getElementById('media-scroll-left')
+        let mediaScrollRight = document.getElementById('media-scroll-right')
 
         aboutMeButton.addEventListener("click", function ()
         {
@@ -36,6 +39,18 @@ function init()
             rotateProject()
         });
 
+        mediaScrollLeft.addEventListener("click", function ()
+        {
+            rotateImage(true)
+
+        });
+
+        mediaScrollRight.addEventListener("click", function ()
+        {
+            rotateImage()
+        });
+
+        updateImage()
         updateProject()
     });
 }
@@ -52,6 +67,32 @@ function rotateProject(left = false)
     }
 
     updateProject()
+}
+
+function rotateImage(left = false)
+{
+    let currentProject = projectArray[projectIndex];
+
+    if (left)
+    {
+        imageIndex = Math.max(imageIndex - 1, 0)
+    }
+    else
+    {
+        imageIndex = Math.min(imageIndex + 1, currentProject.mediaLinks.length - 1)
+    }
+
+    updateImage()
+}
+
+function updateImage()
+{
+    let currentProject = projectArray[projectIndex];
+    let currentImageElement = document.getElementById('current-image')
+    let currentImageLink = currentProject.mediaLinks[imageIndex]
+    console.log(currentProject.mediaLinks, imageIndex, currentProject.mediaLinks[imageIndex])
+
+    currentImageElement.src = currentImageLink;
 }
 
 function updateProject()
