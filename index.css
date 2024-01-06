@@ -4,6 +4,12 @@
     flex-direction: column;
 }
 
+body
+{
+    display: flex;
+    flex-direction: column;
+}
+
 .scrollbar
 {
     width: 100%;
@@ -59,6 +65,7 @@
 {
     background-image: url(./background.jpg);
     background-size: cover;
+    background-position: center;
     width: 100%;
     position: absolute;
     height: 100%;
@@ -87,18 +94,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 92vh;
+    height: 40vh;
+    width: 65%;
+    background-color: #394357;
+    /* /* margin-top: 10vh; */
+    padding: 5vh;
 }
 
 .about-me-button
 {
-    margin: 2vh;
-    margin-left: 1vh;
-    margin-right: 1vh;
+    margin: 1vh 0;
     border-radius: 25px;
     width: fit-content;
     font-size: 20px;
-    height: 7vh;
     background-color: #fc0;
     border-color: #fc0;
     color: #1f1f1f;
@@ -128,7 +136,7 @@
     font-size: x-large;
     font-weight: 700;
     height: 8vh !important;
-    color: #fc0;
+    color: #ffe990;
     width: 100%;
 }
 
@@ -139,7 +147,9 @@
     display: flex;
     align-items: center;
     background-color: #445372;
-    height: 100vh;
+    height: 50vh;
+    /* margin-top: 10vh; */
+    padding: 5vh;
 }
 
 .about-me-button-text
@@ -149,9 +159,8 @@
 
 .about-me-headshot
 {
-    height: 20vh;
-    width: 20vh;
-    margin-bottom: 5vh;
+    height: 25vh;
+    width: 25vh;
 }
 
 .about-me-text
@@ -186,11 +195,13 @@
 
 .button-container
 {
-    height: fit-content;
+    height: 5vh;
     width: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2vh;
+    padding: 5vh;
 }
 
 .project-page
@@ -200,24 +211,21 @@
     display: flex;
     align-items: center;
     background-color: #445372;
-    height: 100vh;
-}
-
-.sliding-project-container
-{
-    display: flex;
-    position: relative;
-    height: 100%;
-    width: 100%;
+    height: fit-content;
+    padding: 5vh;
+    gap: 6vh;
 }
 
 .project-container
 {
-    width: 100%;
-    height: 100vh;
+    width: 65%;
+    height: fit-content;
+    padding: 5vh;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
+    background-color: rgb(57, 67, 87);
 }
 
 .title
@@ -226,7 +234,7 @@
     font-weight: 700;
     font-size: xx-large;
     cursor: pointer;
-    margin-bottom: 3vh;
+    /* margin-bottom: 3vh; */
 }
 
 a:link,
@@ -268,6 +276,7 @@ a:visited:active,
     color: #fc0;
     justify-content: center;
     align-items: center;
+    text-align: center;
     z-index: 2;
     width: 100%;
     font-size: 80px;
@@ -287,14 +296,135 @@ a:visited:active,
 
 .current-image
 {
-    width: 20vh;
-    height: 20vh;
+    width: 30vh;
+    height: 30vh;
+    object-fit: contain;
 }
 
 .sliding-media
 {
     display: flex;
     height: 30vh;
-    width: 30vh;
-    margin-bottom: 5vh;
+    width: fit-content;
+    /* margin-bottom: 5vh; */
+}
+
+.about-me-body-container
+{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 3vh;
+}
+
+.project-scroll
+{
+    height: 30vh;
+    padding: 0 !important;
+}
+
+.bio-scroll
+{
+    height: 30vh;
+    padding: 0 !important;
+}
+
+.project-body
+{
+    display: flex;
+    height: 35vh;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+}
+
+.project-entry-container
+{
+    display: flex;
+    justify-content: left;
+}
+
+.project-button
+{
+    margin: 0;
+    height: fit-content;
+}
+
+.link-class
+{
+    color: #007bff !important;
+}
+
+@media (max-width: 480px)
+{
+    .project-body
+    {
+        flex-direction: column !important;
+        gap: 2vh;
+    }
+
+    .project-entry-container
+    {
+        justify-content: center !important;
+    }
+
+    .project-container
+    {
+        width: 90%;
+    }
+
+    .about-me-body
+    {
+        width: 90%;
+        height: 60vh;
+        padding: 3vh;
+    }
+
+    .about-me-text
+    {
+        padding: 0;
+    }
+
+    .about-me-body-container
+    {
+        flex-direction: column;
+        gap: 2vh;
+    }
+
+    .about-me-headshot,
+    .current-image
+    {
+        height: 18vh;
+        width: 18vh;
+    }
+
+    .sliding-media
+    {
+        gap: 1vh;
+        height: 18vh;
+        justify-content: center;
+    }
+
+    .image-container
+    {
+        width: fit-content;
+    }
+
+    .scroll-img
+    {
+        height: 4vh;
+        width: 4vh;
+    }
+
+    .about-me-button
+    {
+        font-size: 15px;
+    }
+
+    .title
+    {
+        text-align: center;
+    }
 }

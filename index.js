@@ -2,18 +2,21 @@ import projectArray from './projects.json' assert { type: 'json' };
 
 var projectIndex = 0;
 var imageIndex = 0;
+let mobile = false;
 init()
 
 function init()
 {
+
+    if (window.innerWidth < 480)
+    {
+        mobile = true;
+    }
+
     document.addEventListener('DOMContentLoaded', async function ()
     {
         let aboutMeButton = document.getElementById('about-me-button')
         let projectsButton = document.getElementById('projects-button')
-        let scrollLeft = document.getElementById('scroll-left')
-        let scrollRight = document.getElementById('scroll-right')
-        let mediaScrollLeft = document.getElementById('media-scroll-left')
-        let mediaScrollRight = document.getElementById('media-scroll-right')
 
         aboutMeButton.addEventListener("click", function ()
         {
@@ -24,86 +27,200 @@ function init()
 
         projectsButton.addEventListener("click", function ()
         {
-            let projectDiv = document.getElementById('project-page')
+            let projectDiv = document.getElementById('first-project')
             projectDiv.scrollIntoView({ behavior: 'smooth' });
         });
 
-        scrollLeft.addEventListener("click", function ()
+        let right = false
+        let first = true
+        for (let index in projectArray)
         {
-            rotateProject(true)
 
-        });
-
-        scrollRight.addEventListener("click", function ()
-        {
-            rotateProject()
-        });
-
-        mediaScrollLeft.addEventListener("click", function ()
-        {
-            rotateImage(true)
-
-        });
-
-        mediaScrollRight.addEventListener("click", function ()
-        {
-            rotateImage()
-        });
-
-        updateImage()
-        updateProject()
+            let project = projectArray[index]
+            let vals = loadProjects(project, right ^= true, first)
+            if (vals)
+            {
+                createSlider(vals, project)
+            }
+            if (first)
+            {
+                first = false
+            }
+        }
     });
 }
 
-function rotateProject(left = false)
+function createSlider(results, project)
 {
-    if (left)
-    {
-        projectIndex = Math.max(projectIndex - 1, 0)
-    }
-    else
-    {
-        projectIndex = Math.min(projectIndex + 1, projectArray.length - 1)
-    }
+    let [scrollImg1, currentImage, scrollImg2] = results
+    let currentIndex = 0
+    let projectLinks = project['mediaLinks'];
 
-    updateProject()
+    scrollImg1.addEventListener('click', function ()
+    {
+        if (currentIndex == 0)
+        {
+            currentIndex = projectLinks.length - 1
+        }
+        else
+        {
+            currentIndex--
+        }
+        currentImage.src = projectLinks[currentIndex]
+    })
+
+    scrollImg2.addEventListener('click', function ()
+    {
+        if (currentIndex == projectLinks.length - 1)
+        {
+            currentIndex = 0
+        }
+        else
+        {
+            currentIndex++
+        }
+        currentImage.src = projectLinks[currentIndex]
+    })
 }
 
-function rotateImage(left = false)
+function loadProjects(project, right, first)
 {
-    let currentProject = projectArray[projectIndex];
-
-    if (left)
+    let projectPage = document.getElementById('project-page')
+    let entryBody = document.createElement('div');
+    let toReturn = null
+    entryBody.className = "project-entry-container"
+    entryBody.style.justifyContent = right ? "right" : "left"
+    if (first)
     {
-        imageIndex = Math.max(imageIndex - 1, 0)
+        entryBody.id = 'first-project'
     }
-    else
+
+    let projectContainer = document.createElement('div');
+    projectContainer.className = "project-container"
+
+    let title = document.createElement('a');
+    title.innerHTML = project['title'];
+    title.title = 'View project on Github'
+    title.target = "_blank";
+    title.className = "title"
+    title.href = (project['projectLink']) ? project['projectLink'] : project['githubLink']
+
+    let projectBody = document.createElement('div')
+    projectBody.className = 'project-body'
+
+
+    if (project.mediaLinks.length > 0)
     {
-        imageIndex = Math.min(imageIndex + 1, currentProject.mediaLinks.length - 1)
+
+
+        let slidingMedia = document.createElement('div')
+        slidingMedia.className = 'sliding-media'
+
+        let scrollDiv1 = document.createElement('div')
+        scrollDiv1.className = "scroll"
+
+        let scrollImg1 = document.createElement('img')
+        scrollImg1.className = "scroll-img"
+        scrollImg1.src = "./scrollLeft.png"
+
+        let scrollDiv2 = document.createElement('div')
+        scrollDiv2.className = "scroll"
+
+        let scrollImg2 = document.createElement('img')
+        scrollImg2.className = "scroll-img"
+        scrollImg2.src = "./scrollRight.png"
+
+        let imageContainer = document.createElement('div')
+        imageContainer.className = 'image-container'
+
+        let currentImage = document.createElement('img')
+        currentImage.className = "current-image"
+        currentImage.src = project.mediaLinks[0]
+
+        slidingMedia.appendChild(scrollDiv1)
+        slidingMedia.appendChild(imageContainer)
+        slidingMedia.appendChild(scrollDiv2)
+
+        scrollDiv1.appendChild(scrollImg1)
+        scrollDiv2.appendChild(scrollImg2)
+        imageContainer.appendChild(currentImage)
+        projectBody.appendChild(slidingMedia)
+
+        toReturn = [scrollImg1, currentImage, scrollImg2]
     }
 
-    updateImage()
-}
+    let scrollbar = document.createElement('div')
+    scrollbar.classList.add("scrollbar", "scrollbar-primary", "project-scroll")
 
-function updateImage()
-{
-    let currentProject = projectArray[projectIndex];
-    let currentImageElement = document.getElementById('current-image')
-    let currentImageLink = currentProject.mediaLinks[imageIndex]
-    console.log(currentProject.mediaLinks, imageIndex, currentProject.mediaLinks[imageIndex])
+    let summary = document.createElement('div')
+    summary.className = "summary"
+    summary.innerHTML = project.summary
 
-    currentImageElement.src = currentImageLink;
-}
+    let buttonContainer = document.createElement('div')
+    buttonContainer.className = "button-container"
 
-function updateProject()
-{
-    let currentProject = projectArray[projectIndex];
-    let projectTitle = document.getElementById('project-title')
-    let projectSummary = document.getElementById('project-summary')
-    let projectMedia = document.getElementById('project-media')
+    if (project.githubLink)
+    {
+        let buttonText = document.createElement('div')
+        buttonText.className = "about-me-button-text"
+        buttonText.innerHTML = "Github"
 
-    projectTitle.textContent = currentProject['title']
-    projectTitle.href = currentProject['projectLink']
-    projectSummary.textContent = currentProject['summary']
-    projectMedia.mediaLinks = currentProject['mediaLinks']
+        let button = document.createElement('button')
+        button.type = "button"
+        button.classList.add("about-me-button", "btn", "btn-primary", "project-button")
+        button.addEventListener('click', function ()
+        {
+            window.open(project['githubLink'], '_blank');
+        })
+        button.appendChild(buttonText)
+        buttonContainer.appendChild(button)
+    }
+
+    if (project.projectLink)
+    {
+        let buttonText = document.createElement('div')
+        buttonText.className = "about-me-button-text"
+        buttonText.innerHTML = "Visit"
+
+        let button = document.createElement('button')
+        button.type = "button"
+        button.classList.add("about-me-button", "btn", "btn-primary", "project-button")
+        button.addEventListener('click', function ()
+        {
+            window.open(project['projectLink'], '_blank');
+        })
+
+        button.appendChild(buttonText)
+        buttonContainer.appendChild(button)
+    }
+    scrollbar.appendChild(summary)
+
+    projectBody.appendChild(scrollbar)
+
+    projectContainer.appendChild(title)
+    projectContainer.appendChild(projectBody)
+
+    if (project.projectLink || project.githubLink)
+    {
+        projectContainer.appendChild(buttonContainer)
+    }
+    entryBody.appendChild(projectContainer)
+
+    projectPage.appendChild(entryBody)
+
+    if (right && !mobile)
+    {
+        const container = projectBody
+        const children = container.children;
+        const childrenArray = Array.from(children);
+        const reversedChildrenArray = childrenArray.reverse();
+
+        container.innerHTML = '';
+        reversedChildrenArray.forEach(child =>
+        {
+            container.appendChild(child);
+        });
+    }
+
+    return toReturn
 }
