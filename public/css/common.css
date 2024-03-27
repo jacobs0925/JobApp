@@ -1,0 +1,69 @@
+.bounce
+{
+    transition: 0.2s;
+}
+
+.bounce:hover
+{
+    margin-bottom: 1vh;
+}
+
+.header-link
+{
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-link:hover
+{
+    color: #bb9a5b;
+}
+
+.header-link-container
+{
+    padding: 2vh 2vw;
+    gap: 3vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    right: 6vw;
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: 700;
+    color: #a5a4a1;
+}
+
+.btn-primary:hover
+{
+    color: #1f1f1f;
+    background: #ffe270;
+    border: 2px solid #ffe270;
+}
+
+.header
+{
+    background-color: #1f1f1f;
+    justify-content: space-between;
+    display: flex;
+}
+
+.footer
+{
+    background-color: #1f1f1f;
+    height: 5vh;
+    position: relative;
+}
+
+.button-container
+{
+    height: 5vh;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+    padding: 5vh;
+}

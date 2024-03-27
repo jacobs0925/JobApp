@@ -1,0 +1,131 @@
+[
+    {
+        "githubLink": "",
+        "projectLink": "https://delseccosite.web.app/",
+        "summary": "My first major project was the total redesign of Del Secco Diamond's website and to make it mobile friendly. <br><br> I transferred all the data from the previous site and created a new one from the ground up. I used Firebase to host the website and made use of its database functionality so the clients could upload entries for their construction projects and services in the admin console without me needing to hardcode the data into the html. I also made use of Firebase's cloud functions to implement the ability for users to send emails to the client in-site using the SendGrid API. <br><br> Through this project I learned a lot about website development at every level. I had to do research on color theory to choose a color scheme and determine how to lay out pages. I also learned a lot about Firebase and all the services it provides for developers such as authentication and its databases. Beyond gaining programming experience I learned how to work with a client and got a chance to put into action the software engineering principles I learned at UCI.",
+        "title": "Del Secco Diamond Drilling",
+        "stackLinks": [
+            "firebase",
+            "css",
+            "html",
+            "js",
+            "rest",
+            "github"
+        ]
+    },
+    {
+        "githubLink": "https://github.com/jacobs0925/JobHub",
+        "projectLink": "http://cobsjobhub.s3-website-us-west-1.amazonaws.com",
+        "summary": "I wanted to create a novel project to learn more about AWS and its various services and with my experience in data search and gathering, a job aggregator seemed apt.<br><br>The system is split into front and backend. On the backend, an AWS Lambda function written in Python uses requests and html parsing to scrape relevant job information and enters it into a DynamoDB table. The DynamoDB is connected to an OpenSearch Cluster via Pipeline so any changes in the DB are reflected in the search. Another Lambda python function takes a query string and will search that query with OpenSearch. The second Lambda is connected to an HTTP API using AWS Gateway so queries can be made via HTTP GET request. <br><br> The frontend handles users searching and formatting the JSON data returned by the HTTP API in the backend. The site is built to be scalable as AWS instances can be swapped out in favor of larger ones and auto-scaling can be enabled for the lambdas as well the DynamoDB. Additionally, an EC2 server could be deployed with a load balancer in a commercial setting to make the user experience even faster.",
+        "title": "Job Board Aggregator",
+        "stackLinks": [
+            "lambda",
+            "dynamo",
+            "html",
+            "python",
+            "css",
+            "rest",
+            "github",
+            "js",
+            "s3"
+        ]
+    },
+    {
+        "githubLink": "https://github.com/jacobs0925/Heardle",
+        "projectLink": "http://heardle.s3-website-us-west-1.amazonaws.com/",
+        "summary": "The New York Times used to have a game calle Heardle where users could listen to snippets of a song and try to guess the name, getting more time for failt attempts until a limit. My girlfriend and I would play this game nightly until it was removed. I attempted to recreate it shortly after graduating but fell short as I need to manually choose the song and download and and upload it to the site each night. <br><br> Since becoming more familiar with AWS, I realized that with lambdas I could run python code every night at midnight automatically. Also I could use Dynamo DB in the same way I did for my Job Aggregator project to store all of the song data. <br><br> The site works by having a lambda that populates the song DB and another to chose a song at midnight and add it to the S3 bucket. Users can the listen to the snippet provided by the Spotify web API and guess. The autofill feature will auto-populate with songs from the database after the user hasn't typed for a second. Once a user successfully guesses a song or fails, they cannot make new guesses until the next midnight where a new song is selected and the cookies that track user guesses expire.",
+        "title": "Heardle Clone",
+        "stackLinks": [
+            "html",
+            "js",
+            "css",
+            "s3",
+            "dynamo",
+            "lambda",
+            "python",
+            "rest",
+            "github"
+        ]
+    },
+    {
+        "githubLink": "",
+        "projectLink": "",
+        "summary": "I worked on this webcrawler as a part of my Search Engine class at UCI in my senior year. The task was to take some uncompleted code and add a function to scrape through all of the pages on UCI's domain and create a command line interface to search for words scraped. <br><br> Some major problems we needed to overcome were large and repetitive files with no information of value as well as webtraps design to halt our crawlers. I did this using the Simhash algorithm which created a hash of the tokens and frequencies on each page and created a 32 bit fingerprint of it. These fingerprints were stored in a map for fast lookup time and pages with a high similarity to previous ones could be skipped going forward. <br><br> Since this was meant to also have search functionality, we needed methods to quickly iterate over the indexed pages that were loaded and unloaded from memory. I stored blocks of indexed data in equal sized chunks with an index file so the search engine could quickly tell if a relevant word was stored in the chunk. This was still slow however so it was recommended to me by a TA that I perform consolidations of chunks so there was less data on the disk and lookup times could be quicker. The searching was done using Cosine Similarity which used vectors of tokens and their inverse term frequently to choose the most relevant documents in the corpus.",
+        "title": "Python Webcrawler",
+        "stackLinks": [
+            "python",
+            "rest",
+            "github"
+        ]
+    },
+    {
+        "githubLink": "",
+        "projectLink": "",
+        "summary": "I worked D&D Security my summers in college and worked my way up to become their Salesforce Developer. Here are some projects I worked on in my time at D&D: <br><br> Pipeline from QuoteWerks to Salesforce: <br><br>I developed software to automatically pipe product order data from Quotewerks to D&D's Salesforce database. This greatly reduced repetitive labor and removed the chance for human error.<br>● Technologies used: Salesforce, Apex, Relational Databases, Visual Basic, REST<br><br>Product Ordering Workflow:<br><br>I developed a workflow for D&'s internal use that walked users through the process of filing product orders on Salesforce and automatically sent emails to relevant parties. This greatly reduced tedious manual labor, saving users time.<br>● Technologies used: Salesforce Flows, JavaScript<br><br>Revamped Product Ordering Page: <br><br>I designed a custom Apex component for D&D's product ordering table, allowing users to makeinline changes, without the need for navigation to another page to edit each row of data, greatly cutting down wasted time.<br>● Technologies Used: JavaScript, HTML, CSS",
+        "title": "D&D Security",
+        "stackLinks": [
+            "html",
+            "css",
+            "salesforce",
+            "js"
+        ]
+    },
+    {
+        "githubLink": "https://github.com/jacobs0925/ShoppingCart",
+        "mediaLinks": [
+            "./cart3.jpg",
+            "./cart1.png",
+            "./cart2.png",
+            "./cart-diagram.png"
+        ],
+        "projectLink": "",
+        "summary": "For my senior project I worked with a team of 3 other engineers to create an autonomous shopping cart. The project was meant to solve the pain point of carts being stolen or left in a parking lot with minimal effort needed from users. I was in charge of software development and contributed to the wiring and design of the cart as well. <br><br> The code was written in Python and utilized infrared sensors to follow a line that would theoretically be placed on the floor of a convenience store. Additionally it had an ultrasonic sensor to avoid collisions with bystanders as well as monitor the velocity of the cart.<br><br> I learned a lot about the engineering process as well as the importance of teamwork throughout this project. My team and I went through many design iterations and did continuous testing until we found a design that worked most efficiently. I was grateful to work in a team with many different skillsets and to rely on them when I wasn't sure what the next step would be. You can click <a target='_blank' class='link-class' href='Final_Report_Smart_Shopping_Cart.docx.pdf'>HERE</a> to view our report.",
+        "title": "Autonomous Shopping Cart",
+        "stackLinks": [
+            "python",
+            "github"
+        ]
+    },
+    {
+        "githubLink": "",
+        "projectLink": "",
+        "summary": "In my programming language class, we were tasked with developing a new programming language called crux. The professor provided much of the functionality and definitions of symbols used but it was on us to add all of the logic to the language parser. <br><br> It used ANTLR to parse the grammar of the language using the visitor programming pattern creating different types of trees that would model the language. The Abstract Syntax Tree or AST was a tree that showed how symbols would be arranged, for example x = 1 + 1 would have integers 1 and 1 at the bottom with an addition operation as a parent that would then be assigned to its parent, the variable x. We then implemented type checking and code for the intermediate representation which dictated the execution path our program might take. Finally, we added machine code generation which turned these previous representations into actual machine code to be run. <br><br> Unfortunately, I cannot provide the repository as it could be used by other students going forward but would be happy to discuss further or show my repo in person.",
+        "title": "Crux Programming Language",
+        "stackLinks": [
+            "github",
+            "java"
+        ]
+    },
+    {
+        "githubLink": "https://github.com/jacobs0925/Teleparty/tree/dev",
+        "mediaLinks": [
+            "./stream1.png",
+            "./stream2.png",
+            "./stream3.png"
+        ],
+        "projectLink": "https://telepartyclone.web.app/PlayerView.html",
+        "summary": "Since graduating my girlfriend and I have been less able to watch movies together and the software we were using to watch shows together only worked on Netflix. I decide to create my own version, a website where users could create parties with friends and watch content in sync as well as chat together. <br><br> The project is currently under development. It is hosted on firebase and makes use of auth and database features to securely store user data. Eventually I plan to use Firebase Cloud Functions to incorporate the python code from my webcrawler project and allow for users to search the web for media they wish to stream. Feel free to visit the site and try out some user features, currently parties can be created and friend requests and friends can be managed. There is only a placeholder video at the moment but that will change once the user experience is completed.",
+        "title": "Streaming Site",
+        "stackLinks": [
+            "firebase",
+            "html",
+            "python",
+            "css",
+            "github",
+            "js"
+        ]
+    },
+    {
+        "githubLink": "https://github.com/jacobs0925/TarkovWiki/tree/main",
+        "projectLink": "http://cobstarkovwiki.com.s3-website-us-west-1.amazonaws.com/index.html",
+        "summary": "\"I wanted to gain experience using AWS so I asked my friends if there were any tools they needed and told me a website to see if they need a given item might be useful. Throughout the process I not only gained experience with AWS by hosting the site but with GraphQL as well for retrieving pertinent information. <br> The site gets all items from Escape from Tarkov and caches the item data so follow up searches are faster. Additionally since we are searching an alphabetically sorted list, it makes sense to use a binary search to quickly find the most relevant results.\"",
+        "title": "Video Game User Tool",
+        "stackLinks": [
+            "html",
+            "js",
+            "css",
+            "s3",
+            "graphql"
+        ]
+    }
+]

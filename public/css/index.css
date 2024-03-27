@@ -24,21 +24,17 @@ body
     padding: 5vh;
 }
 
-.scrollbar-primary::-webkit-scrollbar
+.scrollbar::-webkit-scrollbar
 {
     width: .5vh;
+    border-radius: .5vh;
 }
 
-.scrollbar-primary::-webkit-scrollbar-thumb
+.scrollbar::-webkit-scrollbar-thumb
 {
     border-radius: .5vh;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
     background-color: #fc0;
-}
-
-.scrollbar-primary
-{
-    scrollbar-color: #fc0 #1f1c1c;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
 .links
@@ -63,7 +59,7 @@ body
 
 .landing
 {
-    background-image: url(./background.jpg);
+    background-image: url(../images/background.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -172,37 +168,7 @@ body
     padding-bottom: 2vh;
 }
 
-.btn-primary:hover
-{
-    color: #1f1f1f;
-    background: #ffe270;
-    border: 2px solid #ffe270;
-}
 
-.header
-{
-    background-color: #1f1f1f;
-    justify-content: right;
-    display: flex;
-}
-
-.footer
-{
-    background-color: #1f1f1f;
-    height: 5vh;
-    position: relative;
-}
-
-.button-container
-{
-    height: 5vh;
-    width: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2vh;
-    padding: 5vh;
-}
 
 .project-page
 {
@@ -225,6 +191,7 @@ body
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    gap: 2vh;
     background-color: rgb(57, 67, 87);
 }
 
@@ -321,7 +288,7 @@ a:visited:active,
 
 .project-scroll
 {
-    height: 30vh;
+    max-height: 30vh;
     padding: 0 !important;
 }
 
@@ -334,7 +301,7 @@ a:visited:active,
 .project-body
 {
     display: flex;
-    height: 35vh;
+    max-height: 35vh;
     justify-content: center;
     align-items: center;
     gap: 5vh;
@@ -357,8 +324,56 @@ a:visited:active,
     color: #007bff !important;
 }
 
+.certification-container
+{
+    width: 100%;
+    display: flex;
+    min-width: 35vw;
+    justify-content: right;
+}
+
+.certifications
+{}
+
+.tech-stack-grid-item
+{
+    display: flex;
+    height: 8vh;
+    width: 8vh;
+}
+
+.tech-stack-grid
+{
+    display: none;
+    transition: max-height 0.5s ease-in-out;
+    gap: 20px;
+    padding: 1vh;
+}
+
+.tech-stack-container
+{
+    color: #fc0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 @media (max-width: 480px)
 {
+    .tech-stack-grid
+    {
+        gap: 15px;
+    }
+
+    .tech-stack-grid-item
+    {
+        height: 6vh;
+        width: 6vh;
+    }
+
     .project-body
     {
         flex-direction: column !important;

@@ -3,27 +3,36 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 
 </head>
 
 <body>
     <div class="header">
+        <div class="header-link-container">
+            <a href="./index.html" class="header-link bounce">
+                home
+            </a>
+            <a href="./projects.html" class="header-link bounce">
+                projects
+            </a>
+        </div>
         <div class="pic-and-links">
             <div class="links">
                 <!-- <img class="img-responsive rounded-circle social-link" src="./headshot.png"> -->
 
                 <a target="_blank" class="social-link" title="Github" href="https://github.com/jacobs0925">
-                    <img class="img-responsive rounded-circle image" src="./github.png">
+                    <img class="img-responsive rounded-circle image" src="./images/github.png">
                 </a>
 
                 <a target="_blank" class="social-link" title="LinkedIn" href="https://www.linkedin.com/in/jjschwar/">
-                    <img class="img-responsive rounded-circle image" src="./linkedin.png">
+                    <img class="img-responsive rounded-circle image" src="./images/linkedin.png">
                 </a>
 
-                <a target="_blank" class="social-link" title="Resume" href="./Resume New.pdf">
-                    <img class="img-responsive rounded-circle image" src="./reusme.png">
+                <a target="_blank" class="social-link" title="Resume" href="./Resume_New.pdf">
+                    <img class="img-responsive rounded-circle image" src="./images/reusme.png">
                 </a>
 
             </div>
@@ -63,7 +72,7 @@
                 </div>
                 <div class="about-me-body-container">
 
-                    <img class="about-me-headshot" src="./headshot.png">
+                    <img class="about-me-headshot" src="./images/headshot.png">
                     <div class="scrollbar scrollbar-primary bio-scroll">
 
                         <div class="about-me-text">
@@ -103,10 +112,10 @@
                             who was into music production.
                             <br><br>
                             During my summers I began working at D&D Security where I would unpackage, tag, and flash
-                            sofware
+                            software
                             onto Chromebooks for a local school district. Although it was nice to work with computers I
                             wanted
-                            to write code proffesionally so after a few years and talking to my manager, I became D&D's
+                            to write code professionally so after a few years and talking to my manager, I became D&D's
                             Salesforce developer. I was introduced to relational databases as well as some basic HTML,
                             JS,
                             and
@@ -120,6 +129,19 @@
                 </div>
             </div>
         </div>
+        <!-- <div class="project-entry-container certification-container">
+            <div class="project-container ">
+                <div class="title">
+                    Certifications:
+                </div>
+                <div class="certifications">
+                    <div data-iframe-width="150" data-iframe-height="270"
+                        data-share-badge-id="c06c9420-0bd9-405f-91d0-ee69e6115d9e"
+                        data-share-badge-host="https://www.credly.com"></div>
+                    <script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+                </div>
+            </div>
+        </div> -->
 
     </div>
 
@@ -127,7 +149,7 @@
 
     </div>
 
-    <script type="module" src="https://cdn.jsdelivr.net/gh/jacobs0925/JobApp@main/index.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>

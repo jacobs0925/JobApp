@@ -1,52 +1,117 @@
-import projectArray from './projects.json' assert { type: 'json' };
+import { getNode } from './DBManager.js';
 
-var projectIndex = 0;
-var imageIndex = 0;
+let projectArray = await getNode("projects");
 let mobile = false;
-init()
+var stackMap = {
+    "lambda":
+    {
+        "alt": "AWS Lambda",
+        "link": "images/lambda.jpg"
+    },
+    "firebase":
+    {
+        "alt": "Firebase",
+        "link": "images/firebase.png"
+    },
+    "dynamo":
+    {
+        "alt": "AWS DynamoDB",
+        "link": "images/dynamodb.png"
+    },
+    "html":
+    {
+        "alt": "HTML",
+        "link": "images/html.png"
+    },
+    "python":
+    {
+        "alt": "Python",
+        "link": "images/python.png"
+    },
+    "css":
+    {
+        "alt": "CSS",
+        "link": "images/css.png"
+    },
+    "rest":
+    {
+        "alt": "REST",
+        "link": "images/rest.webp"
+    },
+    "github":
+    {
+        "alt": "Github",
+        "link": "images/github.png"
+    },
+    "salesforce":
+    {
+        "alt": "Salesforce",
+        "link": "images/salesforce.png"
+    },
+    "js":
+    {
+        "alt": "Javascript",
+        "link": "images/js.png"
+    },
+    "java":
+    {
+        "alt": "Java",
+        "link": "images/java.png"
+    },
+    "graphql":
+    {
+        "alt": "graphQL",
+        "link": "images/graphql.png"
+    },
+    "s3":
+    {
+        "alt": "AWS S3",
+        "link": "images/s3.png"
+    }
+}
 
-function init()
+await init()
+async function init()
 {
-
     if (window.innerWidth < 480)
     {
         mobile = true;
     }
-
-    document.addEventListener('DOMContentLoaded', async function ()
+    let right = false
+    let first = true
+    for (let index in projectArray)
     {
-        let aboutMeButton = document.getElementById('about-me-button')
-        let projectsButton = document.getElementById('projects-button')
 
-        aboutMeButton.addEventListener("click", function ()
+        let project = projectArray[index]
+        let vals = loadProjects(project, right ^= true, first)
+        if (vals)
         {
-            let aboutMeDiv = document.getElementById('about-me')
-            aboutMeDiv.scrollIntoView({ behavior: 'smooth' });
-
-        });
-
-        projectsButton.addEventListener("click", function ()
-        {
-            let projectDiv = document.getElementById('first-project')
-            projectDiv.scrollIntoView({ behavior: 'smooth' });
-        });
-
-        let right = false
-        let first = true
-        for (let index in projectArray)
-        {
-
-            let project = projectArray[index]
-            let vals = loadProjects(project, right ^= true, first)
-            if (vals)
-            {
-                createSlider(vals, project)
-            }
-            if (first)
-            {
-                first = false
-            }
+            createSlider(vals, project)
         }
+        if (first)
+        {
+            first = false
+        }
+    }
+    var toggleElements = document.querySelectorAll('.toggle-stack');
+
+    // Loop through each element and add a click event listener
+    toggleElements.forEach(function (toggleElement)
+    {
+        toggleElement.addEventListener('click', function ()
+        {
+            var stack = toggleElement.nextElementSibling;
+            if (stack.style.display === 'grid')
+            {
+                toggleElement.innerHTML = "Show Project Stack"
+                stack.style.display = 'none';
+            } else
+            {
+                toggleElement.innerHTML = "Hide Project Stack"
+                stack.style.display = 'grid';
+
+            }
+        });
     });
 }
 
@@ -108,8 +173,7 @@ function loadProjects(project, right, first)
     let projectBody = document.createElement('div')
     projectBody.className = 'project-body'
 
-
-    if (project.mediaLinks.length > 0)
+    if (project.mediaLinks)
     {
 
 
@@ -121,14 +185,14 @@ function loadProjects(project, right, first)
 
         let scrollImg1 = document.createElement('img')
         scrollImg1.className = "scroll-img"
-        scrollImg1.src = "./scrollLeft.png"
+        scrollImg1.src = "./images/scrollLeft.png"
 
         let scrollDiv2 = document.createElement('div')
         scrollDiv2.className = "scroll"
 
         let scrollImg2 = document.createElement('img')
         scrollImg2.className = "scroll-img"
-        scrollImg2.src = "./scrollRight.png"
+        scrollImg2.src = "./images/scrollRight.png"
 
         let imageContainer = document.createElement('div')
         imageContainer.className = 'image-container'
@@ -147,6 +211,7 @@ function loadProjects(project, right, first)
         projectBody.appendChild(slidingMedia)
 
         toReturn = [scrollImg1, currentImage, scrollImg2]
+
     }
 
     let scrollbar = document.createElement('div')
@@ -221,6 +286,39 @@ function loadProjects(project, right, first)
             container.appendChild(child);
         });
     }
+    let stackContainer = document.createElement('div')
+    stackContainer.className = "tech-stack-container"
+
+    let stackToggle = document.createElement('div')
+    stackToggle.className = "toggle-stack"
+    stackToggle.innerHTML = "Show Project Stack"
+
+    let stackGrid = document.createElement('div')
+    stackGrid.className = "tech-stack-grid"
+
+    stackContainer.appendChild(stackToggle)
+    stackContainer.appendChild(stackGrid)
+
+    let stackLinks = project['stackLinks']
+    stackLinks = stackLinks.filter(value => value !== null);
+    if (stackLinks)
+    {
+        for (let link of stackLinks)
+        {
+            if (link)
+            {
+                let gridItem = document.createElement('img')
+                gridItem.className = "tech-stack-grid-item"
+                gridItem.title = stackMap[link]['alt']
+                gridItem.src = stackMap[link]['link']
+                stackGrid.appendChild(gridItem)
+            }
+        }
+    }
+    let columnsMax = mobile ? 3 : 7
+    const columns = Math.min(stackLinks.length, columnsMax)
+    stackGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`
+    projectContainer.appendChild(stackContainer)
 
     return toReturn
 }

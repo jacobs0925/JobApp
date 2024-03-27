@@ -1,0 +1,180 @@
+BDO Cloud Data Engineer : 389447c8
+Patterned JR Python : 3b103dc7
+DocuSign : 4d952f2b
+DoorDash SE2 : b9c82e1d
+DoorDash SE1 : eb5d53fd
+9America : a52e2057
+TabaPay : 556c51e3
+Heliux : 5c8eb8c9
+Stealth : 588bbc9e
+SF Arts : 95db7098
+A Society US : 2db69e93
+Doordash SE1 : bd75b75a
+Forward SE Data : 21633840
+Benchling Notebook SE : 9258fb6d
+Benchling SE : e68336d3
+Software Engineer at Applied Intuition : aed3da0d
+Adobe SDE : cfaf8915
+Latch SE : 486da2bb
+Moveworks SE : 8d5218fd
+Weekend Health SE : 90777666
+Jobot SE : e8edc447
+apree SE : 26a75b07
+Federal Reserve : c800439a
+Applied Inbtuition SE : c3b4b7f7
+Patterned JR AWS : 0371617f
+Patterned JR frontend : af5eb7e4
+Patterned JR python : 34986429
+Patterned JR full stack : 3612d55c
+Patterned java back end : f0f40220
+Patterned java aws : 6127fe31
+Clockwise : 16eff6c8
+HeyGen : d6452c81
+Semgrep : 6c35bbd2
+Benchling Fullstack se : 3a2ef684
+Teachfx : ff01a524
+ByteRat : c3c0540f
+Benchling FullStack : 295d54fb
+mixhalo : 15f07a17
+crypto : 18024eae
+openai se full : 456126e6
+openai se back : 546de613
+openai se model : 9c5bde73
+openai se full 3rd party : d1202be4
+openai se data engineer : bb9234c5
+Moveworks se : 96e86f7d
+Netapp : 890fcc24
+Shipt : 575a02ab
+Canonical Data Infra : d3afe71a
+Cynet : 0d2c1882
+Ursus : 5874181a
+Plix : 91584c01
+Tencent : 9674081b
+BetterHelp : 8d8724b1
+Jobot : 622b291c
+Niantic : eb838d77
+Alma : c6560b80
+Imagry : 5394091b
+Rubrik : d93dc3e3
+Pony : 709d277a
+Rubrik2 : 63a65123
+Niantic : fd9d667c
+Continua : ea3e0f97
+Rippling : 888d9da0
+Plus : c1e597bb
+Assembled : 59696f26
+ManageXR : b3408d1e
+Liveramp : c33879f9
+Panoptyc : 742afa1c
+Otterai1 : 01e9d2ef
+Otterai2 : e2e3bec0
+Tesla FS : e41265ca
+Niantic FS : 23db6d7b
+Niantic Back : fb28b7f1
+Resume Library : b8d55e61
+Walmart : 412e65ff
+Rubrik metadata : ba010624
+Diverse Lynx Java FS : 51344430
+Tesla Front : 68f49cdc
+Navan Back : abcf45c6
+Nextracker : 96916f04
+Supermicro : e7ad612a
+Accolade : 07f546be
+Lambent : 009479d5
+INSPYR : 24c950ac
+Albert Bow : 898a969e
+Workday : 3f50e5d1
+Workday cloud : 9807a728
+Stealth : 1841a7ce
+Intelletec : 5552455f
+Autonomous Healthcare : 36b80142
+Envoy : 30270c81
+ZoomInfo : 7dda3689
+The Guestbook : 96cba019
+Incedi : 868f080e
+Indigo Tech : 4f87a235
+Relayer : 04704683
+IBM : 2b9c5fd2
+Lyft : c8efa7a2
+Oracle : 7625008f
+Network Optix : c7139521
+Baton : 65906778
+Nextiva : 02af558e
+tactacam : 6f5437e7
+ServiceNow : b247b3a1
+Box : 273e080c
+Waabi : 5c66647c
+Branch : 5cdbd51f
+Voyage AI : 1153ddf7
+Engineering Square : 5e7eae37
+BURGEON IT SERVICES : c43d68fc
+Intelecox : 7f758c99
+Asana : 2cbf9856
+Western Digital : c5db8c99
+Jobot FE : b140e558
+Jobot SE : 6c2be084
+Netapp : e68b2149
+Benchling : e12d33b9
+Tencent : 5e70df26
+Navan : 09fdc547
+Forward : 16453349
+TCS : 29f847cf
+Aditi : f9e01e1b
+Navan2 : aa992fcc
+Robert Half : de93d0f1
+Anon : 8a457c63
+Orb : b3ac6e2e
+Padlet : 52777e56
+CommmandBar : 64914d76
+Conduit : c467641c
+Numeric : 75715c4d
+Aven : 7ee4bc4c
+Padlet : f6b5671a
+Athelas : ad75ecab
+Padlet2 : dc9334ae
+Lightning Labs : 665308ef
+Spellbrush anime : ec44e820
+Prime : c9c7b80f
+EnergyJobLine : 96fe09ba
+Tesla : d11de936
+Niantic : 2da3e4d4
+Magical : d506585c
+EvenUp : 3722385a
+Clerkie : f4e37365
+SynergisticIT : d63e1cb4
+Supermicro : d819f48c
+Sonos : 51fb4bf3
+Xgrid : f85c0cdc
+OneSchema : 1de13c19
+Answer Sharks : 0668ac44
+Pasana : 556812a8
+Compunnel : d5f6e4c5
+Gap : e9f41f6d
+Jr BE : 2792863c
+Jr FS WEb dEv : e8c724a1
+Fore : baa3b43b
+Benchling : c6ff9fae
+Benchling Inventory FS : c991650c
+Attentive : 5bb7a6db
+Vlink : ea1ffedc
+Synergistic : 2a2c97a5
+Varian : 6ac29cd2
+Fox : 917d3b9c
+Coinbase : 37df501e
+Ceipal : 8fd38b16
+Glean : 1b22dd2f
+Glean2 : 03d084b5
+Stack AI : 846ad6b6
+Canonical : e7852d86
+Ceipal : b2fe4b6f
+MyOme : 5b20d35e
+Virtusa : 11365350
+HeyGen : 9ef64162
+KeyRock : ac44dc7b
+Gem : bbe499fa
+Openai fe : ab485075
+Column : 5a66604d
+Microchip : 205c17cd
+Evenup : 46ef08ba
+Evenup2 : 393bf907
+RCM : 698847c8
