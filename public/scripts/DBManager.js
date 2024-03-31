@@ -8,9 +8,9 @@ const firebaseConfig = {
     measurementId: "G-PNCF77RELT"
 };
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-import { getDatabase, ref as sRef, get, set, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
-import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-storage.js";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref as sRef, get, set, push, onValue, remove } from "firebase/database";
+import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "firebase/storage";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();

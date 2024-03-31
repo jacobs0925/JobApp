@@ -1,0 +1,98 @@
+.tech-stack-grid-container
+{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.tech-stack-body
+{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    padding: 0 1vh;
+}
+
+.tech-stack-header
+{
+    justify-content: center;
+    align-items: center;
+    color: #fc0;
+    font-weight: 600;
+    display: flex;
+    width: 100%;
+    height: 4vh;
+    padding: 1vh;
+}
+
+.tech-stack-footer
+{
+    display: flex;
+    width: 100%;
+    height: 2vh;
+}
+
+.tech-stack
+{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(57, 67, 87);
+}
+
+.tech-stack-scrollbar
+{
+    display: flex;
+    flex-direction: column;
+    height: 39vh;
+    width: fit-content;
+    gap: 1.5vh;
+    padding: 1vh 2vh;
+    background-color: #445372;
+}
+
+.tech-stack-scrollbar::-webkit-scrollbar
+{
+    width: .5vh;
+    border-radius: .5vh;
+}
+
+.tech-stack-scrollbar::-webkit-scrollbar-thumb
+{
+    border-radius: .5vh;
+    background-color: #fc0;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.tech-stack-holder
+{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+}
+
+.tech-scroll .tech-stack-grid-item
+{
+    height: 5vh;
+    width: 5vh;
+}
+
+.selected-icon
+{
+    height: 1.5vh;
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    display: flex;
+}
+
+.tech-stack-item
+{
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    position: relative;
+}

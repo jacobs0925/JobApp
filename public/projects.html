@@ -5,12 +5,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
     <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/projects.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
 
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <title>Projects</title>
 
 </head>
 
 <body>
+    <div class="tech-stack-holder" id="tech-stack"></div>
     <div class="header">
         <div class="header-link-container">
             <a href="./index.html" class="header-link bounce">
@@ -40,7 +46,7 @@
         </div>
     </div>
     <div class="project-page" id="project-page">
-        <div class="project-entry-container">
+        <div id="project-entry-container" class="project-entry-container">
         </div>
 
     </div>
@@ -49,7 +55,9 @@
 
     </div>
 
-    <script type="module" src="./scripts/projects.js"></script>
+    <script type="module" src="./dist/bundle.js"></script>
+
+    <!-- <script type="module" src="./scripts/components.js"></script> -->
 </body>
 
 </html>

@@ -10,6 +10,7 @@
 
 .header-link
 {
+    z-index: 99;
     height: 100%;
     cursor: pointer;
     display: flex;
@@ -67,3 +68,16 @@
     gap: 2vh;
     padding: 5vh;
 }
+
+.tech-scroll
+{
+    color: #fc0;
+    align-items: center;
+    overflow-y: scroll;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 1vh;
+}
+
+.tech-stack-holder
+{}
