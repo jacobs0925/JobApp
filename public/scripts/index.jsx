@@ -1,4 +1,5 @@
 import { getNode, pushNode, setNode } from './DBManager.js';
+import { PageHeader } from './components.js';
 // import projectArray from './projects.json' assert { type: 'json' };
 // setNode("projects", projectArray)
 
@@ -23,7 +24,10 @@ if (document.title == "Jacob Schwarzenberger")
 
         let aboutMeButton = document.getElementById('about-me-button')
         let projectsButton = document.getElementById('projects-button')
+        let pageHeader = document.getElementById('page-header')
 
+
+        ReactDOM.render(<PageHeader />, pageHeader);
         aboutMeButton.addEventListener("click", function ()
         {
             let aboutMeDiv = document.getElementById('about-me')

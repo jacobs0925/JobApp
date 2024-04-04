@@ -4,12 +4,15 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.PageHeader = PageHeader;
 exports.Project = Project;
+exports.Table = Table;
 exports.TechStack = TechStack;
 var _react = _interopRequireWildcard(require("react"));
 var _jsxRuntime = require("react/jsx-runtime");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure " + obj); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
@@ -74,6 +77,57 @@ var stackMap = {
   }
 };
 var filters = [];
+var currentProjects = [];
+function PageHeader() {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+    "class": "header",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      "class": "header-link-container",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+        href: "./index.html",
+        "class": "header-link bounce",
+        children: "home"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+        href: "./projects.html",
+        "class": "header-link bounce",
+        children: "projects"
+      })]
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      "class": "pic-and-links",
+      children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        "class": "links",
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          target: "_blank",
+          "class": "social-link",
+          title: "Github",
+          href: "https://github.com/jacobs0925",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+            "class": "img-responsive rounded-circle image",
+            src: "./images/github.png"
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          target: "_blank",
+          "class": "social-link",
+          title: "LinkedIn",
+          href: "https://www.linkedin.com/in/jjschwar/",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+            "class": "img-responsive rounded-circle image",
+            src: "./images/linkedin.png"
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          target: "_blank",
+          "class": "social-link",
+          title: "Resume",
+          href: "./Resume_New.pdf",
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
+            "class": "img-responsive rounded-circle image",
+            src: "./images/reusme.png"
+          })
+        })]
+      })
+    })]
+  });
+}
 function getRelevantProjects() {
   if (filters.length == 0) {
     return projects;
@@ -133,6 +187,9 @@ function updateFilters(add, id) {
   } finally {
     _iterator3.f();
   }
+  currentProjects = newProjects;
+  var tableContents = document.getElementById('table-contents');
+  ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(Table, {}), tableContents);
 }
 function createStackItems(project, clickable) {
   var techStack = [];
@@ -257,12 +314,71 @@ function SlidingMediaDisplay(_ref4) {
     })]
   });
 }
-function Project(_ref5) {
+function TableItem(_ref5) {
   var project = _ref5.project;
+  function scrollToProject() {
+    var index = projects.indexOf(project);
+    var projectToScroll = document.getElementById('project-' + index);
+    projectToScroll.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
+    });
+  }
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    onClick: scrollToProject,
+    className: "contents-item",
+    children: project.title
+  });
+}
+function Table(_ref6) {
+  _objectDestructuringEmpty(_ref6);
+  function loadContents() {
+    var contents = [];
+    console.log(currentProjects);
+    var _iterator5 = _createForOfIteratorHelper(currentProjects),
+      _step5;
+    try {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+        var project = _step5.value;
+        contents.push( /*#__PURE__*/(0, _jsxRuntime.jsx)(TableItem, {
+          project: project
+        }));
+      }
+    } catch (err) {
+      _iterator5.e(err);
+    } finally {
+      _iterator5.f();
+    }
+    return contents;
+  }
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    className: "table-of-contents",
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: "table-body",
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "table-header",
+        children: "Projects"
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "contents-container",
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: "contents",
+          children: loadContents()
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "table-footer"
+      })]
+    })
+  });
+}
+function Project(_ref7) {
+  var project = _ref7.project;
   var index = projects.indexOf(project);
   if (index == -1) {
     projects.push(project);
+    currentProjects.push(project);
   }
+  index = currentProjects.indexOf(project);
   var _useState5 = (0, _react.useState)("none"),
     _useState6 = _slicedToArray(_useState5, 2),
     displayState = _useState6[0],
@@ -276,6 +392,7 @@ function Project(_ref5) {
     window.open(url, '_blank');
   }
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+    id: 'project-' + index,
     className: "project-entry-container",
     children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
       className: "project-container",
@@ -348,3 +465,5 @@ function Project(_ref5) {
     })
   });
 }
+
+//make tech stack more obvious and align both w top of projects

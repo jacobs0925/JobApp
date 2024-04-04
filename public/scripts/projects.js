@@ -14,7 +14,7 @@ var ReactDOM = require('react-dom');
 if (document.title == "Projects") {
   var init = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var projectsContainer, projectArray, techStack, fakeProject, index, project, projectContainer, stackWidth;
+      var projectsContainer, projectArray, techStack, contents, pageHeader, fakeProject, index, project, projectContainer, stackWidth;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -27,6 +27,9 @@ if (document.title == "Projects") {
           case 4:
             projectArray = _context.sent;
             techStack = document.getElementById('tech-stack');
+            contents = document.getElementById('table-contents');
+            pageHeader = document.getElementById('page-header');
+            ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.PageHeader, {}), pageHeader);
             fakeProject = {
               stackLinks: ["lambda", "firebase", "dynamo", "html", "python", "css", "rest", "github", "salesforce", "js", "java", "graphql", "s3"]
             };
@@ -43,7 +46,9 @@ if (document.title == "Projects") {
             }
             stackWidth = (window.innerWidth - document.querySelector('.project-container').offsetWidth) / 2;
             techStack.style.width = stackWidth + "px";
-          case 11:
+            contents.style.width = stackWidth + "px";
+            ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.Table, {}), contents);
+          case 16:
           case "end":
             return _context.stop();
         }

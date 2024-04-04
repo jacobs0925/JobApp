@@ -1,6 +1,6 @@
 import { getNode } from './DBManager.js';
 var ReactDOM = require('react-dom');
-import { Project, TechStack } from './components.js'
+import { Project, TechStack, Table, PageHeader } from './components.js'
 
 if (document.title == "Projects")
 {
@@ -16,6 +16,9 @@ if (document.title == "Projects")
         let projectsContainer = document.getElementById('project-page')
         let projectArray = await getNode("projects");
         let techStack = document.getElementById('tech-stack')
+        let contents = document.getElementById('table-contents')
+        let pageHeader = document.getElementById('page-header')
+        ReactDOM.render(<PageHeader />, pageHeader);
 
         let fakeProject = {
             stackLinks: ["lambda", "firebase", "dynamo", "html", "python", "css", "rest", "github", "salesforce", "js", "java", "graphql", "s3"]
@@ -33,6 +36,9 @@ if (document.title == "Projects")
 
         var stackWidth = (window.innerWidth - document.querySelector('.project-container').offsetWidth) / 2;
         techStack.style.width = stackWidth + "px"
+        contents.style.width = stackWidth + "px"
+
+        ReactDOM.render(<Table />, contents);
     }
 }
 

@@ -90,7 +90,7 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 60vh;
+    height: fit-content;
     width: 90%;
     background-color: #394357;
     /* /* margin-top: 10vh; */
@@ -279,10 +279,12 @@ a:visited:active,
 .about-me-body-container
 {
     width: 100%;
-    height: 100%;
+    height: fit-content;
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
+    gap: 5vh;
     padding: 3vh;
 }
 
@@ -294,7 +296,7 @@ a:visited:active,
 
 .bio-scroll
 {
-    height: 30vh;
+    height: fit-content;
     padding: 0 !important;
 }
 

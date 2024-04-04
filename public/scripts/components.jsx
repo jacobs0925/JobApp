@@ -72,6 +72,40 @@ var stackMap = {
 }
 
 var filters = []
+var currentProjects = []
+
+function PageHeader()
+{
+    return (
+        <div class="header">
+            <div class="header-link-container">
+                <a href="./index.html" class="header-link bounce">
+                    home
+                </a>
+                <a href="./projects.html" class="header-link bounce">
+                    projects
+                </a>
+            </div>
+            <div class="pic-and-links">
+                <div class="links">
+
+                    <a target="_blank" class="social-link" title="Github" href="https://github.com/jacobs0925">
+                        <img class="img-responsive rounded-circle image" src="./images/github.png"></img>
+                    </a>
+
+                    <a target="_blank" class="social-link" title="LinkedIn" href="https://www.linkedin.com/in/jjschwar/">
+                        <img class="img-responsive rounded-circle image" src="./images/linkedin.png"></img>
+                    </a>
+
+                    <a target="_blank" class="social-link" title="Resume" href="./Resume_New.pdf">
+                        <img class="img-responsive rounded-circle image" src="./images/reusme.png"></img>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    )
+}
 
 function getRelevantProjects()
 {
@@ -116,6 +150,10 @@ function updateFilters(add, id)
         ReactDOM.render(<Project project={project} />, projectContainer);
         mainProjectsContainer.appendChild(projectContainer)
     }
+    currentProjects = newProjects
+
+    let tableContents = document.getElementById('table-contents')
+    ReactDOM.render(<Table />, tableContents);
 }
 function createStackItems(project, clickable)
 {
@@ -215,13 +253,64 @@ function SlidingMediaDisplay({ mediaLinks })
         </div>
     );
 }
+
+function TableItem({ project })
+{
+
+    function scrollToProject()
+    {
+        let index = projects.indexOf(project);
+        let projectToScroll = document.getElementById('project-' + index)
+        projectToScroll.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center'
+        });
+    }
+    return (
+        <div onClick={scrollToProject} className='contents-item'>{project.title}</div>
+    )
+}
+
+function Table({ })
+{
+
+    function loadContents()
+    {
+        let contents = []
+        console.log(currentProjects)
+        for (let project of currentProjects)
+        {
+            contents.push(<TableItem project={project}></TableItem>)
+        }
+        return contents
+    }
+
+    return (
+        <div className='table-of-contents'>
+            <div className='table-body'>
+                <div className='table-header'>Projects</div>
+                <div className='contents-container'>
+                    <div className='contents'>
+                        {loadContents()}
+                    </div>
+                </div>
+                <div className='table-footer'></div>
+            </div>
+        </div>
+    )
+}
+
 function Project({ project })
 {
     let index = projects.indexOf(project);
     if (index == -1)
     {
         projects.push(project)
+        currentProjects.push(project)
     }
+    index = currentProjects.indexOf(project);
+
     let [displayState, setDisplayState] = useState("none");
     let toggleStack = () =>
     {
@@ -234,7 +323,7 @@ function Project({ project })
     }
 
     return (
-        <div className="project-entry-container">
+        <div id={'project-' + index} className="project-entry-container">
             <div className="project-container">
                 <a title="View project on Github" target="_blank" className="title" href={project.projectLink}>{project.title}</a>
                 <div className="project-body">
@@ -262,4 +351,6 @@ function Project({ project })
     );
 }
 
-export { Project, TechStack };
+//make tech stack more obvious and align both w top of projects
+
+export { Project, TechStack, Table, PageHeader };
