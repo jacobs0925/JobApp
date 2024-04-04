@@ -142,6 +142,7 @@ function updateFilters(add, id)
     }
     let mainProjectsContainer = document.getElementById('project-page')
     mainProjectsContainer.innerHTML = ""
+    currentProjects = []
 
     let newProjects = getRelevantProjects()
     for (let project of newProjects)
@@ -259,13 +260,13 @@ function TableItem({ project })
 
     function scrollToProject()
     {
-        let index = projects.indexOf(project);
+        let index = currentProjects.indexOf(project);
         let projectToScroll = document.getElementById('project-' + index)
-        projectToScroll.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'center'
-        });
+        let el = document.querySelector(".holder");
+        let yOffset = el.offsetTop;
+        let y = projectToScroll.getBoundingClientRect().top + window.pageYOffset - yOffset;
+
+        window.scrollTo({ top: y, behavior: 'smooth' });
     }
     return (
         <div onClick={scrollToProject} className='contents-item'>{project.title}</div>
@@ -307,8 +308,8 @@ function Project({ project })
     if (index == -1)
     {
         projects.push(project)
-        currentProjects.push(project)
     }
+    currentProjects.push(project)
     index = currentProjects.indexOf(project);
 
     let [displayState, setDisplayState] = useState("none");
@@ -351,6 +352,6 @@ function Project({ project })
     );
 }
 
-//make tech stack more obvious and align both w top of projects
+//make tech stack more obvious and fix tech stack filtering
 
 export { Project, TechStack, Table, PageHeader };

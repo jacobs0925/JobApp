@@ -170,6 +170,7 @@ function updateFilters(add, id) {
   }
   var mainProjectsContainer = document.getElementById('project-page');
   mainProjectsContainer.innerHTML = "";
+  currentProjects = [];
   var newProjects = getRelevantProjects();
   var _iterator3 = _createForOfIteratorHelper(newProjects),
     _step3;
@@ -317,12 +318,14 @@ function SlidingMediaDisplay(_ref4) {
 function TableItem(_ref5) {
   var project = _ref5.project;
   function scrollToProject() {
-    var index = projects.indexOf(project);
+    var index = currentProjects.indexOf(project);
     var projectToScroll = document.getElementById('project-' + index);
-    projectToScroll.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'center'
+    var el = document.querySelector(".holder");
+    var yOffset = el.offsetTop;
+    var y = projectToScroll.getBoundingClientRect().top + window.pageYOffset - yOffset;
+    window.scrollTo({
+      top: y,
+      behavior: 'smooth'
     });
   }
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -376,8 +379,8 @@ function Project(_ref7) {
   var index = projects.indexOf(project);
   if (index == -1) {
     projects.push(project);
-    currentProjects.push(project);
   }
+  currentProjects.push(project);
   index = currentProjects.indexOf(project);
   var _useState5 = (0, _react.useState)("none"),
     _useState6 = _slicedToArray(_useState5, 2),
@@ -466,4 +469,4 @@ function Project(_ref7) {
   });
 }
 
-//make tech stack more obvious and align both w top of projects
+//make tech stack more obvious and fix tech stack filtering
