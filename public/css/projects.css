@@ -197,3 +197,32 @@
     gap: 2vh;
     background-color: rgb(57, 67, 87);
 }
+
+@media (max-width: 480px)
+{
+    .table-contents-holder
+    {
+        display: none;
+    }
+
+    .holder
+    {
+        display: none;
+    }
+
+    .project-container
+    {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .title
+    {
+        font-size: 26px;
+    }
+
+    .project-page
+    {
+        gap: 0;
+    }
+}

@@ -11,6 +11,10 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var ReactDOM = require('react-dom');
+
+// import projectArray from './projects.json' assert { type: 'json' };
+// setNode("projects", projectArray)
+
 if (document.title == "Projects") {
   var init = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -26,6 +30,7 @@ if (document.title == "Projects") {
             return (0, _DBManager.getNode)("projects");
           case 4:
             projectArray = _context.sent;
+            console.log(projectArray);
             techStack = document.getElementById('tech-stack');
             contents = document.getElementById('table-contents');
             pageHeader = document.getElementById('page-header');
@@ -48,7 +53,7 @@ if (document.title == "Projects") {
             techStack.style.width = stackWidth + "px";
             contents.style.width = stackWidth + "px";
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.Table, {}), contents);
-          case 16:
+          case 17:
           case "end":
             return _context.stop();
         }

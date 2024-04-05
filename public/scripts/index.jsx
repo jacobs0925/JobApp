@@ -1,5 +1,7 @@
 import { getNode, pushNode, setNode } from './DBManager.js';
 import { PageHeader } from './components.js';
+var ReactDOM = require('react-dom');
+
 // import projectArray from './projects.json' assert { type: 'json' };
 // setNode("projects", projectArray)
 
@@ -30,8 +32,15 @@ if (document.title == "Jacob Schwarzenberger")
         ReactDOM.render(<PageHeader />, pageHeader);
         aboutMeButton.addEventListener("click", function ()
         {
-            let aboutMeDiv = document.getElementById('about-me')
-            aboutMeDiv.scrollIntoView({ behavior: 'smooth' });
+            let aboutMeDiv = document.getElementById('project-page')
+            let el = document.querySelector(".header");
+            let yOffset = el.offsetHeight;
+            console.log(el, yOffset)
+            let y = aboutMeDiv.getBoundingClientRect().top + window.pageYOffset - yOffset;
+
+            window.scrollTo({ top: y, behavior: 'smooth' });
+
+            // aboutMeDiv.scrollIntoView({ behavior: 'smooth' });
 
         });
 

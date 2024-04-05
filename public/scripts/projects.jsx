@@ -2,6 +2,9 @@ import { getNode } from './DBManager.js';
 var ReactDOM = require('react-dom');
 import { Project, TechStack, Table, PageHeader } from './components.js'
 
+// import projectArray from './projects.json' assert { type: 'json' };
+// setNode("projects", projectArray)
+
 if (document.title == "Projects")
 {
     let mobile = false;
@@ -15,6 +18,7 @@ if (document.title == "Projects")
         }
         let projectsContainer = document.getElementById('project-page')
         let projectArray = await getNode("projects");
+        console.log(projectArray)
         let techStack = document.getElementById('tech-stack')
         let contents = document.getElementById('table-contents')
         let pageHeader = document.getElementById('page-header')
