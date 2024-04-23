@@ -4,6 +4,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.DialogBox = DialogBox;
 exports.PageHeader = PageHeader;
 exports.Project = Project;
 exports.Table = Table;
@@ -74,6 +75,10 @@ var stackMap = {
   "s3": {
     "alt": "AWS S3",
     "link": "images/s3.png"
+  },
+  "react": {
+    "alt": "React",
+    "link": "images/react.jpg"
   }
 };
 var filters = [];
@@ -219,13 +224,44 @@ function createStackItems(project, clickable) {
   return techStack;
 }
 ;
-function TechStack(_ref) {
-  var project = _ref.project;
+function DialogBox(_ref) {
+  var element = _ref.element,
+    text = _ref.text;
+  var dialogRef = (0, _react.useRef)(null);
+  var closeDialog = function closeDialog() {
+    var dialog = dialogRef.current;
+    if (dialog) {
+      dialog.classList.add('fade-out'); // Apply the fade-out effect
+      setTimeout(function () {
+        dialog.remove(); // Remove after transition ends
+      }, 500); // Duration should match the transition duration
+    }
+  };
+  return (
+    /*#__PURE__*/
+    //340 = width -10 to account for 1vh padding
+    (0, _jsxRuntime.jsxs)("div", {
+      ref: dialogRef,
+      onClick: closeDialog,
+      className: "dialog-box",
+      style: {
+        top: -32,
+        right: 340 - element.children[0].offsetWidth
+      },
+      children: [console.log(dialogRef.current), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: "dialog-content",
+        children: text
+      })]
+    })
+  );
+}
+function TechStack(_ref2) {
+  var project = _ref2.project;
   return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
     className: "tech-stack",
     children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "tech-stack-header",
-      children: "Tech Stack"
+      children: "Tech Filter"
     }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
       className: "tech-stack-body",
       children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
@@ -237,8 +273,8 @@ function TechStack(_ref) {
     })]
   });
 }
-function TechStackItem(_ref2) {
-  var itemData = _ref2.itemData;
+function TechStackItem(_ref3) {
+  var itemData = _ref3.itemData;
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     selected = _useState2[0],
@@ -263,16 +299,16 @@ function TechStackItem(_ref2) {
     })]
   });
 }
-function ProjectTechStackItem(_ref3) {
-  var itemData = _ref3.itemData;
+function ProjectTechStackItem(_ref4) {
+  var itemData = _ref4.itemData;
   return /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
     className: "tech-stack-grid-item",
     title: itemData.alt,
     src: itemData.link
   });
 }
-function SlidingMediaDisplay(_ref4) {
-  var mediaLinks = _ref4.mediaLinks;
+function SlidingMediaDisplay(_ref5) {
+  var mediaLinks = _ref5.mediaLinks;
   if (mediaLinks == null) {
     return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {});
   }
@@ -315,8 +351,8 @@ function SlidingMediaDisplay(_ref4) {
     })]
   });
 }
-function TableItem(_ref5) {
-  var project = _ref5.project;
+function TableItem(_ref6) {
+  var project = _ref6.project;
   function scrollToProject() {
     var index = currentProjects.indexOf(project);
     var projectToScroll = document.getElementById('project-' + index);
@@ -334,11 +370,10 @@ function TableItem(_ref5) {
     children: project.title
   });
 }
-function Table(_ref6) {
-  _objectDestructuringEmpty(_ref6);
+function Table(_ref7) {
+  _objectDestructuringEmpty(_ref7);
   function loadContents() {
     var contents = [];
-    console.log(currentProjects);
     var _iterator5 = _createForOfIteratorHelper(currentProjects),
       _step5;
     try {
@@ -374,8 +409,8 @@ function Table(_ref6) {
     })
   });
 }
-function Project(_ref7) {
-  var project = _ref7.project;
+function Project(_ref8) {
+  var project = _ref8.project;
   var index = projects.indexOf(project);
   if (index == -1) {
     projects.push(project);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 var ReactDOM = require('react-dom');
 var projects = []
@@ -68,6 +68,11 @@ var stackMap = {
     {
         "alt": "AWS S3",
         "link": "images/s3.png"
+    },
+    "react":
+    {
+        "alt": "React",
+        "link": "images/react.jpg"
     }
 }
 
@@ -177,13 +182,38 @@ function createStackItems(project, clickable)
     return techStack;
 };
 
+function DialogBox({ element, text })
+{
+    const dialogRef = useRef(null);
+    let closeDialog = () =>
+    {
+        const dialog = dialogRef.current;
+        if (dialog)
+        {
+            dialog.classList.add('fade-out'); // Apply the fade-out effect
+            setTimeout(() =>
+            {
+                dialog.remove(); // Remove after transition ends
+            }, 500); // Duration should match the transition duration
+        }
+    }
+    return (                                                                                           //340 = width -10 to account for 1vh padding
+        <div ref={dialogRef} onClick={closeDialog} className='dialog-box' style={{ top: -32, right: 340 - element.children[0].offsetWidth }}>
+            {console.log(dialogRef.current)}
+            <div className='dialog-content'>
+                {text}
+            </div>
+        </div>
+    )
+}
+
 function TechStack({ project })
 {
 
     return (
         <div className='tech-stack'>
             <div className='tech-stack-header'>
-                Tech Stack
+                Tech Filter
             </div>
             <div className='tech-stack-body'>
                 <div className='tech-stack-scrollbar tech-scroll'>
@@ -279,7 +309,6 @@ function Table({ })
     function loadContents()
     {
         let contents = []
-        console.log(currentProjects)
         for (let project of currentProjects)
         {
             contents.push(<TableItem project={project}></TableItem>)
@@ -354,4 +383,4 @@ function Project({ project })
 
 //make tech stack more obvious and fix tech stack filtering
 
-export { Project, TechStack, Table, PageHeader };
+export { Project, TechStack, Table, PageHeader, DialogBox };

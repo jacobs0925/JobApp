@@ -178,3 +178,50 @@ Microchip : 205c17cd
 Evenup : 46ef08ba
 Evenup2 : 393bf907
 RCM : 698847c8
+test : 89b7afd1
+Heliux : 5c1d8bce
+AMISEQ : 63399d64
+Anaplan : 735bbd10
+Cloudflare : eac1fcf3
+Jobot : 69f0746c
+Cypris : 95479bad
+HireIO : 9a0403a2
+Ceipal : 9e4282ba
+Ceipal 2 : ab4bdc84
+Ceipal 3 : 94db8eff
+Platform : 85af9541
+Monterra : 78f0da61
+Ricefw : a072cedf
+Mochi : 44b19631
+Synergistic IT : 6ad5a016
+Infiscal : ef57f926
+Canonical : c123ca07
+Walmart : d9e0bda1
+Opto Investments : 78800932
+Legalist : 60d6e88b
+F5 : 36387428
+Cybertec : d8749d6d
+Autodesk : 6bd12737
+Procept : 4bf4441c
+Autodesk intern : f15f63ce
+Kforce : 06e631aa
+cadence : 0dd30dff
+canonical : fcfc4594
+Kapwing : eadaec24
+Cuein : 7f529d8e
+HeyGen : 69d6a5ae
+tentable : 9400b4a5
+codeium : 2a647025
+intelliswift : 5e88b24f
+Figma : 54127783
+Niantic : dc956a42
+Bitgo : 52f53047
+ceipal : 04357526
+Freedom robotics : 2a98572d
+finch : 1f5ee2cd
+slickdeals : 79a1f0c2
+braintrust : ae6015e0
+windobrne : 84b1b20c
+tencent : 6f96be85
+multion ai : 87123a6a
+celonis : 7b9fb7f0

@@ -35,7 +35,6 @@ if (document.title == "Jacob Schwarzenberger")
             let aboutMeDiv = document.getElementById('project-page')
             let el = document.querySelector(".header");
             let yOffset = el.offsetHeight;
-            console.log(el, yOffset)
             let y = aboutMeDiv.getBoundingClientRect().top + window.pageYOffset - yOffset;
 
             window.scrollTo({ top: y, behavior: 'smooth' });

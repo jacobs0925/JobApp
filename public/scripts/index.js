@@ -38,7 +38,6 @@ if (document.title == "Jacob Schwarzenberger") {
               var aboutMeDiv = document.getElementById('project-page');
               var el = document.querySelector(".header");
               var yOffset = el.offsetHeight;
-              console.log(el, yOffset);
               var y = aboutMeDiv.getBoundingClientRect().top + window.pageYOffset - yOffset;
               window.scrollTo({
                 top: y,

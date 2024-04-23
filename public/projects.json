@@ -33,6 +33,22 @@
         "title": "Vedus Health ChatGPT Integration"
     },
     {
+        "githubLink": "https://github.com/jacobs0925/JobApp",
+        "projectLink": "https://jobapp-ad828.web.app/index.html",
+        "stackLinks": [
+            "firebase",
+            "css",
+            "html",
+            "js",
+            "rest",
+            "github",
+            "react",
+            "python"
+        ],
+        "summary": "I've been tinkering with this portfolio site since graduation, slowly adding more details to it over time. The site is hosted using firebase and uses a firebase realtime database to store projects that are displayed on the projects page as well as to log visitors duration and the fragment within each generated url. I wrote a python script that edits my reusme pdf and generates a new link for the portfolio site hyperlink to redirect to. The script associates this 8 character uuid with the comppany name so I can tell which companies have viewed my resume and roughly gauge recruiters' interest. Since becoming more familiar with the React framework, I am working to adopt ReactJS for the site instead of vanilla JS.",
+        "title": "Portfolio Site"
+    },
+    {
         "githubLink": "https://github.com/jacobs0925/JobHub",
         "mediaLinks": [
             "./images/jobscraperdiagram2.png",

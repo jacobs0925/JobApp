@@ -4,6 +4,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _firestore = require("firebase/firestore");
 var _DBManager = require("./DBManager.js");
 var _components = require("./components.js");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -18,7 +19,7 @@ var ReactDOM = require('react-dom');
 if (document.title == "Projects") {
   var init = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var projectsContainer, projectArray, techStack, contents, pageHeader, fakeProject, index, project, projectContainer, stackWidth;
+      var projectsContainer, projectArray, techStack, contents, pageHeader, fakeProject, newDoc, index, project, projectContainer, stackWidth, hash, projectToScroll, count, el, yOffset, y;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -30,17 +31,23 @@ if (document.title == "Projects") {
             return (0, _DBManager.getNode)("projects");
           case 4:
             projectArray = _context.sent;
-            console.log(projectArray);
             techStack = document.getElementById('tech-stack');
             contents = document.getElementById('table-contents');
             pageHeader = document.getElementById('page-header');
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.PageHeader, {}), pageHeader);
             fakeProject = {
-              stackLinks: ["lambda", "firebase", "dynamo", "html", "python", "css", "rest", "github", "salesforce", "js", "java", "graphql", "s3"]
+              stackLinks: ["lambda", "firebase", "dynamo", "react", "html", "python", "css", "rest", "github", "salesforce", "js", "java", "graphql", "s3"]
             };
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.TechStack, {
               project: fakeProject
             }), techStack);
+            newDoc = document.createElement('div');
+            techStack.appendChild(newDoc);
+            ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.DialogBox, {
+              element: techStack,
+              text: "Click an icon here to filter by projects that use that technology."
+            }), newDoc);
+            techStack.children[0];
             for (index in projectArray) {
               project = projectArray[index];
               projectContainer = document.createElement('div');
@@ -53,11 +60,37 @@ if (document.title == "Projects") {
             techStack.style.width = stackWidth + "px";
             contents.style.width = stackWidth + "px";
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.Table, {}), contents);
-          case 17:
+            hash = window.location.hash;
+            if (!(hash != null)) {
+              _context.next = 38;
+              break;
+            }
+            _context.prev = 22;
+            hash = hash.substr(1);
+            projectToScroll = document.getElementById('project-' + hash);
+            console.log(projectArray[hash]['title'].replace(/\s/g, ""));
+            _context.next = 28;
+            return (0, _DBManager.getNode)(projectArray[hash]['title'].replace(/\s/g, ""));
+          case 28:
+            count = _context.sent;
+            (0, _DBManager.setNode)(projectArray[hash]['title'].replace(/\s/g, ""), count + 1);
+            el = document.querySelector(".holder");
+            yOffset = el.offsetTop;
+            y = projectToScroll.getBoundingClientRect().top + window.pageYOffset - yOffset;
+            window.scrollTo({
+              top: y,
+              behavior: 'smooth'
+            });
+            _context.next = 38;
+            break;
+          case 36:
+            _context.prev = 36;
+            _context.t0 = _context["catch"](22);
+          case 38:
           case "end":
             return _context.stop();
         }
-      }, _callee);
+      }, _callee, null, [[22, 36]]);
     }));
     return function init() {
       return _ref.apply(this, arguments);
