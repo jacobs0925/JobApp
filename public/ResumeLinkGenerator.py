@@ -40,4 +40,4 @@ def edit_file(file_path, link_to_replace, company_name):
     with open(r'public\jobMap.txt', 'a') as job_map_file:
         job_map_file.write(f'{company_name} : {random_id}\n')
 # Example usage:
-edit_file(r'public\Resume_New.pdf', 'https://jobapp-ad828.web.app#resume', 'Protingent')
+edit_file(r'public\Resume_New.pdf', 'https://jobapp-ad828.web.app#resume', 'frontend react')

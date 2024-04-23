@@ -4,6 +4,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var _firestore = require("firebase/firestore");
 var _DBManager = require("./DBManager.js");
 var _components = require("./components.js");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -18,7 +19,7 @@ var ReactDOM = require('react-dom');
 if (document.title == "Jacob Schwarzenberger") {
   var init = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var currentDate, currentDayOfMonth, currentMonth, currentYear, aboutMeButton, projectsButton, pageHeader, count;
+      var currentDate, currentDayOfMonth, currentMonth, currentYear, aboutMeButton, projectsButton, pageHeader, buttonContainer, newDoc, count;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
@@ -33,6 +34,14 @@ if (document.title == "Jacob Schwarzenberger") {
             aboutMeButton = document.getElementById('about-me-button');
             projectsButton = document.getElementById('projects-button');
             pageHeader = document.getElementById('page-header');
+            buttonContainer = document.getElementById('button-container');
+            newDoc = document.createElement('div'); // newDoc.className = "dialog-holder"
+            buttonContainer.appendChild(newDoc);
+            ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.DialogBox, {
+              element: projectsButton,
+              position: 'bottom-right',
+              text: "Click here to see some of my professional and personal work!"
+            }), newDoc);
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.PageHeader, {}), pageHeader);
             aboutMeButton.addEventListener("click", function () {
               var aboutMeDiv = document.getElementById('project-page');
@@ -49,12 +58,12 @@ if (document.title == "Jacob Schwarzenberger") {
             projectsButton.addEventListener("click", function () {
               location.href = "./projects.html";
             });
-            _context.next = 14;
+            _context.next = 18;
             return (0, _DBManager.getNode)('viewed');
-          case 14:
+          case 18:
             count = _context.sent;
             (0, _DBManager.setNode)("viewed", count + 1);
-          case 16:
+          case 20:
           case "end":
             return _context.stop();
         }

@@ -226,7 +226,30 @@ function createStackItems(project, clickable) {
 ;
 function DialogBox(_ref) {
   var element = _ref.element,
-    text = _ref.text;
+    text = _ref.text,
+    position = _ref.position;
+  var style = {
+    top: -32,
+    right: 340 - element.offsetWidth
+  };
+  if (position == "top-left") {
+    //default
+  } else if (position == "top-right") {
+    style = {
+      top: -32,
+      left: 340 - element.offsetWidth
+    };
+  } else if (position == "bottom-right") {
+    style = {
+      bottom: -32,
+      left: 340 - element.offsetWidth
+    };
+  } else if (position == "bottom-left") {
+    style = {
+      bottom: -32,
+      right: 340 - element.offsetWidth
+    };
+  }
   var dialogRef = (0, _react.useRef)(null);
   var closeDialog = function closeDialog() {
     var dialog = dialogRef.current;
@@ -244,10 +267,7 @@ function DialogBox(_ref) {
       ref: dialogRef,
       onClick: closeDialog,
       className: "dialog-box",
-      style: {
-        top: -32,
-        right: 340 - element.children[0].offsetWidth
-      },
+      style: style,
       children: [console.log(dialogRef.current), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: "dialog-content",
         children: text

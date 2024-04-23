@@ -62,8 +62,14 @@
     position: relative;
 }
 
+.dialog-holder
+{
+    position: relative;
+}
+
 .button-container
 {
+    position: relative;
     height: 5vh;
     width: fit-content;
     display: flex;
@@ -89,6 +95,43 @@
 :root
 {
     --header-height: 10vh;
+}
+
+.dialog-box-background
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.dialog-box
+{
+    z-index: 99;
+    cursor: pointer;
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    transition: opacity .5s;
+}
+
+.fade-out
+{
+    opacity: 0;
+}
+
+.dialog-content
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 65px;
+    border-radius: 8px;
+    background-color: white;
+    padding: 1vh;
 }
 
 @media (max-width: 480px)

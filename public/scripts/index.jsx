@@ -1,5 +1,6 @@
+import { doc } from 'firebase/firestore';
 import { getNode, pushNode, setNode } from './DBManager.js';
-import { PageHeader } from './components.js';
+import { PageHeader, DialogBox } from './components.js';
 var ReactDOM = require('react-dom');
 
 // import projectArray from './projects.json' assert { type: 'json' };
@@ -27,6 +28,12 @@ if (document.title == "Jacob Schwarzenberger")
         let aboutMeButton = document.getElementById('about-me-button')
         let projectsButton = document.getElementById('projects-button')
         let pageHeader = document.getElementById('page-header')
+
+        let buttonContainer = document.getElementById('button-container')
+        let newDoc = document.createElement('div')
+        // newDoc.className = "dialog-holder"
+        buttonContainer.appendChild(newDoc)
+        ReactDOM.render(<DialogBox element={projectsButton} position={'bottom-right'} text={"Click here to see some of my professional and personal work!"} />, newDoc)
 
 
         ReactDOM.render(<PageHeader />, pageHeader);

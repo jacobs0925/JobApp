@@ -182,8 +182,23 @@ function createStackItems(project, clickable)
     return techStack;
 };
 
-function DialogBox({ element, text })
+function DialogBox({ element, text, position })
 {
+    let style = { top: -32, right: 340 - element.offsetWidth }
+    if (position == "top-left")
+    {
+        //default
+    }
+    else if (position == "top-right")
+    {
+        style = { top: -32, left: 340 - element.offsetWidth }
+    } else if (position == "bottom-right")
+    {
+        style = { bottom: -32, left: 340 - element.offsetWidth }
+    } else if (position == "bottom-left")
+    {
+        style = { bottom: -32, right: 340 - element.offsetWidth }
+    }
     const dialogRef = useRef(null);
     let closeDialog = () =>
     {
@@ -198,7 +213,7 @@ function DialogBox({ element, text })
         }
     }
     return (                                                                                           //340 = width -10 to account for 1vh padding
-        <div ref={dialogRef} onClick={closeDialog} className='dialog-box' style={{ top: -32, right: 340 - element.children[0].offsetWidth }}>
+        <div ref={dialogRef} onClick={closeDialog} className='dialog-box' style={style}>
             {console.log(dialogRef.current)}
             <div className='dialog-content'>
                 {text}

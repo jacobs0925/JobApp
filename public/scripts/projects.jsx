@@ -30,7 +30,7 @@ if (document.title == "Projects")
         ReactDOM.render(<TechStack project={fakeProject} />, techStack);
         let newDoc = document.createElement('div')
         techStack.appendChild(newDoc)
-        ReactDOM.render(<DialogBox element={techStack} text={"Click an icon here to filter by projects that use that technology."} />, newDoc)
+        ReactDOM.render(<DialogBox element={techStack.children[0]} position={'top-left'} text={"Click an icon here to filter by projects that use that technology."} />, newDoc)
         techStack.children[0]
 
         for (let index in projectArray)

@@ -225,3 +225,30 @@ windobrne : 84b1b20c
 tencent : 6f96be85
 multion ai : 87123a6a
 celonis : 7b9fb7f0
+Protingent : 51bbd355
+Nutanix : 15164e13
+pyxer : e9e4519b
+alpha grid : 1f1d0e12
+crossover : 577a532c
+steady vision : 2b926aac
+synergistic it : 7e251c6d
+k1x : 3e5410ea
+minware : 293c630a
+charlie health : 1071afd5
+Genesis10  : abb33ef2
+canonical : cf165bb6
+synergistic it : 1543d950
+tidal : d69e80b0
+verana : 8d3c3726
+coinbase : a5b4dcce
+teksystems : 812a73ba
+servicenow : b243003f
+gem : abe69998
+byte dance : ea913fb4
+Tendo : 8a5af68a
+ARGUS LABS : 370166bd
+pivotal : 5836f72f
+verkada : c5e987a4
+coherent : 72b1f5ef
+couchbase : 5a7cd472
+frontend react : 9e3688f0

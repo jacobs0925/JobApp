@@ -44,7 +44,8 @@ if (document.title == "Projects") {
             newDoc = document.createElement('div');
             techStack.appendChild(newDoc);
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.DialogBox, {
-              element: techStack,
+              element: techStack.children[0],
+              position: 'top-left',
               text: "Click an icon here to filter by projects that use that technology."
             }), newDoc);
             techStack.children[0];
