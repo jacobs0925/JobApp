@@ -19,18 +19,13 @@ var ReactDOM = require('react-dom');
 if (document.title == "Jacob Schwarzenberger") {
   var init = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var currentDate, currentDayOfMonth, currentMonth, currentYear, aboutMeButton, projectsButton, pageHeader, buttonContainer, newDoc, count;
+      var aboutMeButton, projectsButton, pageHeader, buttonContainer, newDoc;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             if (window.innerWidth < 480) {
               mobile = true;
             }
-            currentDate = new Date();
-            currentDayOfMonth = currentDate.getDate();
-            currentMonth = currentDate.getMonth();
-            currentYear = currentDate.getFullYear();
-            time = currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;
             aboutMeButton = document.getElementById('about-me-button');
             projectsButton = document.getElementById('projects-button');
             pageHeader = document.getElementById('page-header');
@@ -58,12 +53,7 @@ if (document.title == "Jacob Schwarzenberger") {
             projectsButton.addEventListener("click", function () {
               location.href = "./projects.html";
             });
-            _context.next = 18;
-            return (0, _DBManager.getNode)('viewed');
-          case 18:
-            count = _context.sent;
-            (0, _DBManager.setNode)("viewed", count + 1);
-          case 20:
+          case 11:
           case "end":
             return _context.stop();
         }
@@ -73,26 +63,6 @@ if (document.title == "Jacob Schwarzenberger") {
       return _ref.apply(this, arguments);
     };
   }();
-  var reportTime = function reportTime() {
-    var timeSpent = performance.now();
-    var hash = window.location.hash.substr(1);
-    var udata;
-    if (hash) {
-      udata = {
-        "hash": hash,
-        "time": time,
-        "timeSpent": Math.round(timeSpent / 1000 * 100) / 100
-      };
-    } else {
-      udata = {
-        "time": time,
-        "timeSpent": Math.round(timeSpent / 1000 * 100) / 100
-      };
-    }
-    (0, _DBManager.pushNode)(hash ? "visitors" : "anonymousVisitors", udata);
-  };
-  var time = null;
   var mobile = false;
-  window.addEventListener('beforeunload', reportTime);
   init();
 }

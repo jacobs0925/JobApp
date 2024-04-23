@@ -1,14 +1,40 @@
-import { doc } from 'firebase/firestore';
-import { getNode, setNode } from './DBManager.js';
+import { getNode, setNode, pushNode } from './DBManager.js';
 var ReactDOM = require('react-dom');
 import { Project, TechStack, Table, PageHeader, DialogBox } from './components.js'
 
 // import projectArray from './projects.json' assert { type: 'json' };
 // setNode("projects", projectArray)
 
+
 if (document.title == "Projects")
 {
     let mobile = false;
+    let time = null
+    window.addEventListener('beforeunload', reportTime);
+
+    function reportTime()
+    {
+        let timeSpent = performance.now()
+
+        const hash = window.location.hash.substr(1);
+        let udata
+        if (hash)
+        {
+            udata = {
+                "hash": hash,
+                "time": time,
+                "timeSpent": Math.round((timeSpent / 1000) * 100) / 100
+            }
+        }
+        else
+        {
+            udata = {
+                "time": time,
+                "timeSpent": Math.round((timeSpent / 1000) * 100) / 100
+            }
+        }
+        pushNode(hash ? "visitors" : "anonymousVisitors", udata)
+    }
 
     init()
     async function init()
@@ -17,6 +43,15 @@ if (document.title == "Projects")
         {
             mobile = true;
         }
+        const currentDate = new Date();
+        const currentDayOfMonth = currentDate.getDate();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+        time = currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;
+
+        let count = await getNode('viewed')
+        setNode("viewed", count + 1)
+
         let projectsContainer = document.getElementById('project-page')
         let projectArray = await getNode("projects");
         let techStack = document.getElementById('tech-stack')

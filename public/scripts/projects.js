@@ -4,7 +4,6 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _firestore = require("firebase/firestore");
 var _DBManager = require("./DBManager.js");
 var _components = require("./components.js");
 var _jsxRuntime = require("react/jsx-runtime");
@@ -17,19 +16,47 @@ var ReactDOM = require('react-dom');
 // setNode("projects", projectArray)
 
 if (document.title == "Projects") {
+  var reportTime = function reportTime() {
+    var timeSpent = performance.now();
+    var hash = window.location.hash.substr(1);
+    var udata;
+    if (hash) {
+      udata = {
+        "hash": hash,
+        "time": time,
+        "timeSpent": Math.round(timeSpent / 1000 * 100) / 100
+      };
+    } else {
+      udata = {
+        "time": time,
+        "timeSpent": Math.round(timeSpent / 1000 * 100) / 100
+      };
+    }
+    (0, _DBManager.pushNode)(hash ? "visitors" : "anonymousVisitors", udata);
+  };
   var init = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var projectsContainer, projectArray, techStack, contents, pageHeader, fakeProject, newDoc, index, project, projectContainer, stackWidth, hash, projectToScroll, count, el, yOffset, y;
+      var currentDate, currentDayOfMonth, currentMonth, currentYear, count, projectsContainer, projectArray, techStack, contents, pageHeader, fakeProject, newDoc, index, project, projectContainer, stackWidth, hash, projectToScroll, _count, el, yOffset, y;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             if (window.innerWidth < 480) {
               mobile = true;
             }
+            currentDate = new Date();
+            currentDayOfMonth = currentDate.getDate();
+            currentMonth = currentDate.getMonth();
+            currentYear = currentDate.getFullYear();
+            time = currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;
+            _context.next = 8;
+            return (0, _DBManager.getNode)('viewed');
+          case 8:
+            count = _context.sent;
+            (0, _DBManager.setNode)("viewed", count + 1);
             projectsContainer = document.getElementById('project-page');
-            _context.next = 4;
+            _context.next = 13;
             return (0, _DBManager.getNode)("projects");
-          case 4:
+          case 13:
             projectArray = _context.sent;
             techStack = document.getElementById('tech-stack');
             contents = document.getElementById('table-contents');
@@ -63,18 +90,18 @@ if (document.title == "Projects") {
             ReactDOM.render( /*#__PURE__*/(0, _jsxRuntime.jsx)(_components.Table, {}), contents);
             hash = window.location.hash;
             if (!(hash != null)) {
-              _context.next = 38;
+              _context.next = 47;
               break;
             }
-            _context.prev = 22;
+            _context.prev = 31;
             hash = hash.substr(1);
             projectToScroll = document.getElementById('project-' + hash);
             console.log(projectArray[hash]['title'].replace(/\s/g, ""));
-            _context.next = 28;
+            _context.next = 37;
             return (0, _DBManager.getNode)(projectArray[hash]['title'].replace(/\s/g, ""));
-          case 28:
-            count = _context.sent;
-            (0, _DBManager.setNode)(projectArray[hash]['title'].replace(/\s/g, ""), count + 1);
+          case 37:
+            _count = _context.sent;
+            (0, _DBManager.setNode)(projectArray[hash]['title'].replace(/\s/g, ""), _count + 1);
             el = document.querySelector(".holder");
             yOffset = el.offsetTop;
             y = projectToScroll.getBoundingClientRect().top + window.pageYOffset - yOffset;
@@ -82,21 +109,23 @@ if (document.title == "Projects") {
               top: y,
               behavior: 'smooth'
             });
-            _context.next = 38;
+            _context.next = 47;
             break;
-          case 36:
-            _context.prev = 36;
-            _context.t0 = _context["catch"](22);
-          case 38:
+          case 45:
+            _context.prev = 45;
+            _context.t0 = _context["catch"](31);
+          case 47:
           case "end":
             return _context.stop();
         }
-      }, _callee, null, [[22, 36]]);
+      }, _callee, null, [[31, 45]]);
     }));
     return function init() {
       return _ref.apply(this, arguments);
     };
   }();
   var mobile = false;
+  var time = null;
+  window.addEventListener('beforeunload', reportTime);
   init();
 }
